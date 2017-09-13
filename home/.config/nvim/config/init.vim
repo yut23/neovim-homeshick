@@ -36,9 +36,8 @@ Plug 'ervandew/supertab'
 Plug 'neomake/neomake'
 
 " haskell
-Plug 'neovimhaskell/haskell-vim'
+Plug 'parsonsmatt/intero-neovim'
 Plug 'eagletmt/neco-ghc'
-Plug 'eagletmt/ghcmod-vim'
 
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
