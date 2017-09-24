@@ -1,6 +1,8 @@
 " config/plugins.vim
+" Plugin configuration
 
 " vim-airline
+" -----------
 set laststatus=2        " always show the status line
 set noshowmode          " airline handles this
 
@@ -16,22 +18,30 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 
 " better-whitespace
+" -----------------
 let g:better_whitespace_filetypes_blacklist=['diff', 'gitcommit', 'unite', 'qf', 'help', 'man', 'pydoc']
 
 
-" NeoMake
-autocmd! BufWritePost * Neomake " automatically run Neomake on write
+" Neomake
+" -------
+" enable automake on write
+call neomake#configure#automake('w')
 
-let g:neomake_c_enabled_makers = ['clangtidy'] " use clang-tidy on C files
-let g:neomake_cpp_enabled_makers = ['clangtidy'] " use clang-tidy on C++ files
+" use clang-tidy on C and C++ files
+let g:neomake_c_enabled_makers = ['clangtidy']
+let g:neomake_cpp_enabled_makers = ['clangtidy']
 
-let g:neomake_open_list = 2 " automatically open location-list/quickfix window, but preserve cursor position
+" automatically open location-list/quickfix window, but preserve cursor position
+let g:neomake_open_list = 2
 
 
 " supertab
+" --------
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 
+" deoplete
+" --------
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * pclose " To close preview window of deoplete automagically
@@ -40,12 +50,14 @@ let g:deoplete#sources#jedi#show_docstring = 1
 
 
 " vim-pydoc
+" ---------
 let g:pydoc_open_cmd = 'new'
 let g:pydoc_highlight = 0
 "let g:pydoc_window_lines = 0.5
 
 
-" Haskell stuff
+" Haskell
+" -------
 " intero-neovim
 augroup interoMaps
   au!
@@ -61,8 +73,10 @@ augroup interoMaps
   au FileType haskell nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
   au FileType haskell nnoremap <silent> <leader>ih :InteroHide<CR>
 
-  " Automatically reload on save
+  " Automatically reload on write
   au BufWritePost *.hs InteroReload
+  " Disable neomake automake on write
+  au FileType haskell call neomake#configure#automake_for_buffer('')
 
   " Load individual modules
   au FileType haskell nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>

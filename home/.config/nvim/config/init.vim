@@ -38,12 +38,16 @@ Plug 'neomake/neomake'
 " haskell
 Plug 'parsonsmatt/intero-neovim'
 Plug 'eagletmt/neco-ghc'
+Plug 'itchyny/vim-haskell-indent'
 
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " python
 Plug 'somini/pydoc.vim'
 Plug 'zchee/deoplete-jedi'
+
+" MIPS
+Plug 'harenome/vim-mipssyntax'
 
 " other
 Plug 'christoomey/vim-tmux-navigator'
