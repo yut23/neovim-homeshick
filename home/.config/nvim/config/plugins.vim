@@ -45,6 +45,13 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 autocmd CompleteDone * pclose " To close preview window of deoplete automagically
+
+" Erlang omnicompletion (from https://github.com/johnzeng/vimhome/blob/71fd42b/plugin/vimrc.vim)
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.erlang = '[^. *\t]:\w*'
+
 " deoplete-jedi
 let g:deoplete#sources#jedi#show_docstring = 1
 

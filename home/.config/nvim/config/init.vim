@@ -35,19 +35,20 @@ Plug 'ervandew/supertab'
 " coding
 Plug 'neomake/neomake'
 
+" erlang
+Plug 'vim-erlang/vim-erlang-omnicomplete'
+
 " haskell
 Plug 'parsonsmatt/intero-neovim'
 Plug 'eagletmt/neco-ghc'
 Plug 'itchyny/vim-haskell-indent'
 
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" MIPS
+Plug 'harenome/vim-mipssyntax'
 
 " python
 Plug 'somini/pydoc.vim'
 Plug 'zchee/deoplete-jedi'
-
-" MIPS
-Plug 'harenome/vim-mipssyntax'
 
 " other
 Plug 'christoomey/vim-tmux-navigator'
