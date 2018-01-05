@@ -1,8 +1,12 @@
 " config/general.vim
 
 "" Colors {{{
-set termguicolors
-colorscheme molokai
+if $TERM ==# 'linux'
+  colorscheme delek
+else
+  set termguicolors
+  colorscheme molokai
+endif
 set background=dark
 " }}}
 
@@ -46,7 +50,11 @@ set lazyredraw          " redraw only when necessary (faster macros)
 set scrolloff=2         " don't let it touch the edge!
 
 "let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+if $TERM !=# 'linux'
+  set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+else
+  set guicursor=
+endif
 set mouse=a
 " }}}
 

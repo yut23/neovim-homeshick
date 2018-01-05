@@ -6,15 +6,23 @@
 set laststatus=2        " always show the status line
 set noshowmode          " airline handles this
 
-let g:airline_theme             = 'powerlineish'
+"let g:airline_theme             = 'powerlineish'
+if $TERM ==# 'linux'
+  let g:airline_theme           = 'monochrome'
+  let g:airline_powerline_fonts = 0
+else
+  let g:airline_theme           = 'molokai'
+  let g:airline_powerline_fonts = 1
+endif
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline_powerline_fonts   = 1
+let g:airline#extensions#neomake#enabled = 1
 
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+" Don't show hunk indicators if they are all zero
+let g:airline#extensions#hunks#non_zero_only = 1
 
 
 " better-whitespace
