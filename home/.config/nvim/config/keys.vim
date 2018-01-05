@@ -23,7 +23,7 @@ nnoremap <Leader>Q :q!<CR>
 " za is so awkward
 nnoremap <Leader>z za
 
-nnoremap <silent> <Leader>h :let @/ = ""<CR>
+nnoremap <silent> <Leader>hi :let @/ = ""<CR>
 
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>u :GundoToggle<CR>

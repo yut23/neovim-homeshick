@@ -14,6 +14,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'justinmk/molokai'
 
 " ui
+Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -23,6 +24,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'rickhowe/diffchar.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " syntax
@@ -34,6 +37,7 @@ Plug 'ervandew/supertab'
 
 " coding
 Plug 'neomake/neomake'
+Plug 'thinca/vim-ref'
 
 " erlang
 Plug 'vim-erlang/vim-erlang-omnicomplete'
@@ -47,7 +51,6 @@ Plug 'itchyny/vim-haskell-indent'
 Plug 'harenome/vim-mipssyntax'
 
 " python
-Plug 'somini/pydoc.vim'
 Plug 'zchee/deoplete-jedi'
 
 " other
