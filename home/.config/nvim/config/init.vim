@@ -24,6 +24,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'rickhowe/diffchar.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/gundo.vim'
+Plug 'thinca/vim-ref'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -32,26 +33,30 @@ Plug 'tpope/vim-unimpaired'
 Plug 'sheerun/vim-polyglot'
 
 " completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
+if ! g:minimal_rc
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" coding
-Plug 'neomake/neomake'
-Plug 'thinca/vim-ref'
+  " coding
+  Plug 'neomake/neomake'
 
-" erlang
-Plug 'vim-erlang/vim-erlang-omnicomplete'
+  " erlang
+  Plug 'vim-erlang/vim-erlang-omnicomplete'
 
-" haskell
-Plug 'parsonsmatt/intero-neovim'
-Plug 'eagletmt/neco-ghc'
-Plug 'itchyny/vim-haskell-indent'
+  " haskell
+  Plug 'eagletmt/neco-ghc'
+  Plug 'itchyny/vim-haskell-indent'
+  Plug 'parsonsmatt/intero-neovim'
 
-" MIPS
-Plug 'harenome/vim-mipssyntax'
+  " MIPS
+  Plug 'harenome/vim-mipssyntax'
 
-" python
-Plug 'zchee/deoplete-jedi'
+  " prolog
+  Plug 'soli/prolog-vim'
+
+  " python
+  Plug 'zchee/deoplete-jedi'
+endif
 
 " other
 Plug 'christoomey/vim-tmux-navigator'

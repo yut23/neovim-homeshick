@@ -5,3 +5,6 @@ autocmd FileType haskell setlocal tabstop=8 expandtab softtabstop=4 shiftwidth=4
 
 " Set Erlang omnifunc
 autocmd FileType erlang setlocal omnifunc=erlang_complete#Complete
+
+" set Prolog indentation
+autocmd FileType swiprolog setlocal tabstop=4 expandtab softtabstop=4 shiftwidth=4

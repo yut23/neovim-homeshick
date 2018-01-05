@@ -2,8 +2,10 @@
 
 "" Colors {{{
 if $TERM ==# 'linux'
+  " better theme for 8-color console
   colorscheme delek
 else
+  " pretty colors everywhere else
   set termguicolors
   colorscheme molokai
 endif
@@ -47,7 +49,7 @@ set cursorline          " highlight current line
 set wildmode=list:longest
 set lazyredraw          " redraw only when necessary (faster macros)
 
-set scrolloff=2         " don't let it touch the edge!
+set scrolloff=2         " keep the cursor at least 2 lines from the top and bottom
 
 "let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
 if $TERM !=# 'linux'
@@ -59,8 +61,8 @@ set mouse=a
 " }}}
 
 "" Searching {{{
-set ignorecase          " We don't care about case...
-set smartcase           " ...or do we? Only if there are uppercase letters
+set ignorecase          " See below
+set smartcase           " Only case-sensitive if there are uppercase letters
 " }}}
 
 "" Folding {{{
