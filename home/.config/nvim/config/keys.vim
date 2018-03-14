@@ -31,3 +31,5 @@ nnoremap <Leader>u :GundoToggle<CR>
 " Leave terminal mode with escape
 tnoremap <Esc> <C-\><C-n>
 
+nmap <C-_> <plug>NERDCommenterToggle<CR>
+vmap <C-_> <plug>NERDCommenterToggle<CR>gv
