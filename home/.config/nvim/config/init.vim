@@ -48,6 +48,9 @@ if ! g:minimal_rc
   Plug 'itchyny/vim-haskell-indent'
   Plug 'parsonsmatt/intero-neovim'
 
+  " Kerboscript (kOS)
+  Plug 'KSP-KOS/EditorTools', {'branch': 'develop', 'rtp': 'VIM/vim-kerboscript'}
+
   " MIPS
   Plug 'harenome/vim-mipssyntax'
 
