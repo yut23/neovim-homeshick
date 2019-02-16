@@ -43,15 +43,17 @@ tnoremap <Esc> <C-\><C-n>
 nmap <C-_> <plug>NERDCommenterToggle<CR>
 vmap <C-_> <plug>NERDCommenterToggle<CR>gv
 
-function LC_maps()
-  if has_key(g:LanguageClient_serverCommands, &filetype)
-    "nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
-    nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    " Apparently <S-F6> is <F18> in Terminator.
-    nnoremap <buffer> <silent> <F18> :call LanguageClient#textDocument_rename()<CR>
-  endif
-endfunction
-augroup LCneovim
-  autocmd!
-  autocmd FileType * call LC_maps()
-augroup END
+if ! g:minimal_rc
+  function LC_maps()
+    if has_key(g:LanguageClient_serverCommands, &filetype)
+      "nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
+      nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+      " Apparently <S-F6> is <F18> in Terminator.
+      nnoremap <buffer> <silent> <F18> :call LanguageClient#textDocument_rename()<CR>
+    endif
+  endfunction
+  augroup LCneovim
+    autocmd!
+    autocmd FileType * call LC_maps()
+  augroup END
+endif
