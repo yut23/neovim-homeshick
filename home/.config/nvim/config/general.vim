@@ -1,13 +1,23 @@
 " config/general.vim
+" vim: foldmethod=marker
 
 "" Colors {{{
 if $TERM ==# 'linux'
   " better theme for 8-color console
-  colorscheme delek
+  if &diff
+    colorscheme industry
+  else
+    colorscheme delek
+  endif
 else
   " pretty colors everywhere else
-  set termguicolors
   colorscheme molokai
+  if $TERM ==# 'rxvt-unicode-256color'
+    " urxvt doesn't like true color yet
+    set notermguicolors
+  else
+    set termguicolors
+  endif
 endif
 set background=dark
 " }}}
@@ -20,7 +30,7 @@ set splitright
 set virtualedit=block
 
 " Mark columns 80 and 90, and past 120
-let &colorcolumn="80,90,120"
+let &colorcolumn='80,90,120'
 
 " Decrease delay on escape
 set ttimeoutlen=50
@@ -28,9 +38,11 @@ set ttimeoutlen=50
 " use system clipboard
 set clipboard+=unnamed
 " automatically copy visual selection to system clipboard
-vmap <LeftRelease> "*ygv
+"vmap <LeftRelease> "*ygv
 
-" man pages?
+" don't delete terminal buffers when switching buffers or closing windows
+" see https://github.com/neovim/neovim/issues/2368
+autocmd TermOpen * set bufhidden=hide
 " }}}
 
 "" Spaces and Tabs {{{
@@ -51,13 +63,15 @@ set lazyredraw          " redraw only when necessary (faster macros)
 
 set scrolloff=2         " keep the cursor at least 2 lines from the top and bottom
 
-"let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
+" change cursor shape in insert mode
 if $TERM !=# 'linux'
   set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 else
   set guicursor=
 endif
 set mouse=a
+
+set shortmess+=c        " don't give |ins-completion-menu| messages.
 " }}}
 
 "" Searching {{{
@@ -73,8 +87,16 @@ set foldmethod=indent   " fold based on indent level
 " }}}
 
 "" Backups {{{
-set backup
 set backupdir=~/.local/share/nvim/backup
+" Create dir
+call mkdir(&backupdir, 'p')
+set backup
 " }}}
 
-" vim:foldmethod=marker
+"" Undo {{{
+" Keep undo history across sessions by storing it in a file
+set undodir=~/.local/share/nvim/undo
+" Create dir
+call mkdir(&undodir, 'p')
+set undofile
+" }}}
