@@ -47,9 +47,6 @@ Plug 'wellle/targets.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sukima/xmledit'
 
-" completion
-Plug 'ervandew/supertab'
-
 " other
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'LucHermitte/lh-vim-lib'
@@ -63,8 +60,14 @@ if ! g:minimal_rc
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
       \ }
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'ncm2/ncm2'
+  Plug 'roxma/nvim-yarp'
   Plug 'dense-analysis/ale'
+
+  " ncm2 sources
+  Plug 'ncm2/ncm2-bufword'
+  Plug 'ncm2/ncm2-path'
+  Plug 'fgrsnau/ncm2-otherbuf'
 
   " haskell
   "Plug 'eagletmt/neco-ghc'
@@ -80,7 +83,7 @@ if ! g:minimal_rc
   " python
   " jedi-vim for documentation support
   Plug 'davidhalter/jedi-vim'
-  Plug 'zchee/deoplete-jedi'
+  Plug 'ncm2/ncm2-jedi'
 
   " Pandoc
   Plug 'vim-pandoc/vim-pandoc'

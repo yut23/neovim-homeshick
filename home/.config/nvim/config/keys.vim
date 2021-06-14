@@ -83,3 +83,47 @@ nnoremap gi `.
 
 " Show unicode info with ga
 nmap ga <Plug>(UnicodeGA)
+
+" Completion menu/supertab replacement
+inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
+
+" Insert selected match with cursor keys as well
+inoremap <expr> <Up> pumvisible() ? "\<C-P>" : "\<Up>"
+inoremap <expr> <Down> pumvisible() ? "\<C-N>" : "\<Down>"
+
+" CR mapping from https://github.com/ncm2/ncm2/issues/163
+" Insert newline only if nothing changes after accepting the current match
+"inoremap <expr> <Plug>(cr_prev) execute('let g:_prev_line = getline(".")')
+"inoremap <expr> <Plug>(cr_do) (g:_prev_line == getline('.') ? "\<cr>" : "")
+"inoremap <expr> <Plug>(cr_post) execute('unlet g:_prev_line')
+
+function! HandleCR() abort
+  if !pumvisible()
+    return "\<CR>"
+  endif
+  if empty(v:completed_item) || !b:ncm2_enable
+    " no info about whether a completion item is selected, so close menu and insert <CR>
+    "echo 'no info'
+    return "\<C-Y>\<CR>"
+  endif
+  " now we know v:completed_item is not empty and ncm2 is enabled
+  if empty(v:completed_item.user_data)
+    " no completion item selected
+    "echo 'no completion item selected'
+    return "\<C-Y>\<CR>"
+  endif
+  " otherwise, just close the menu
+  "echo 'closing menu'
+  return "\<C-Y>"
+endfunction
+"imap <expr> <CR> (pumvisible() ? "\<Plug>(cr_prev)\<C-Y>\<Plug>(cr_do)\<Plug>(cr_post)" : "\<CR>")
+"imap <expr> <Plug>(cr_hook) ""
+"imap <expr> <Plug>(cr_do) ((empty(v:completed_item) || (!b:ncm2_enable || empty(v:completed_item.user_data))) ? "\<CR>" : "")
+"imap <expr> <CR>
+"      \ !pumvisible() ? "\<CR>" :
+"      \ empty(v:completed_item) \|\| (!b:ncm2_enable \|\| empty(v:completed_item.user_data))
+"      \ ? "\<C-Y>\<CR>"
+"      \ : "\<C-Y>\<Plug>(cr_hook)"
+"imap <expr> <Plug>(HandleCR) HandleCR()
+imap <expr> <CR> HandleCR()

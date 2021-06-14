@@ -73,6 +73,8 @@ endif
 set mouse=a
 
 set shortmess+=c        " don't give |ins-completion-menu| messages.
+" for ncm2
+set completeopt=noinsert,menuone,noselect
 " }}}
 
 "" Searching {{{

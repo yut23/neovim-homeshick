@@ -38,11 +38,6 @@ let g:airline#extensions#wordcount#filetypes += ['pandoc']
 let g:better_whitespace_filetypes_blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'man', 'pydoc', 'fugitive']
 
 
-" supertab
-" --------
-let g:SuperTabDefaultCompletionType = '<c-n>'
-
-
 " vim-ref
 " -------
 " open help viewer in vertical split
@@ -73,24 +68,13 @@ endif
 
 
 if ! g:minimal_rc
-  " deoplete
-  " --------
-  " Use deoplete.
-  let g:deoplete#enable_at_startup = 1
-  augroup deopleteAutoClose
+  " NCM2
+  " ----
+  inoremap <C-Space> <c-r>=ncm2#force_trigger()<cr>
+  augroup ncm2AutoEnable
     autocmd!
-    autocmd CompleteDone * pclose " To close preview window of deoplete automagically
+    autocmd BufEnter * call ncm2#enable_for_buffer()
   augroup END
-
-  " Erlang omnicompletion (from https://github.com/johnzeng/vimhome/blob/71fd42b/plugin/vimrc.vim)
-  if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-  endif
-  call deoplete#custom#source('omni', 'input_patterns', {'erlang': '[^. *\t]:\w*'})
-
-  " deoplete-jedi
-  let g:deoplete#sources#jedi#show_docstring = 1
-
 
   " LanguageClient-neovim
   " ---------------------
