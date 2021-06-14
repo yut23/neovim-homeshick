@@ -141,6 +141,10 @@ if ! g:minimal_rc
 
   let g:ale_cpp_cppcheck_options = '--enable=style --inline-suppr'
 
+  " Add support for https://github.com/Koihik/LuaFormatter
+  call ale#fix#registry#Add('luaformatter', 'ale#fixers#luaformatter#Fix', ['lua'], 'Fix Lua files with LuaFormatter.')
+  let g:ale_lua_luaformatter_executable = '/home/eric/.luarocks/bin/lua-format'
+
   " jedi-vim (disable everything)
   " This has to go in the vimrc instead of an ftplugin, due to how jedi-vim is
   " set up.
