@@ -4,7 +4,10 @@
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  augroup vimplug_install
+    autocmd!
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  augroup END
 endif
 
 
@@ -75,7 +78,6 @@ if ! g:minimal_rc
   Plug 'ncm2/ncm2-ultisnips'
 
   " haskell
-  "Plug 'eagletmt/neco-ghc'
   Plug 'itchyny/vim-haskell-indent'
   Plug 'parsonsmatt/intero-neovim'
 

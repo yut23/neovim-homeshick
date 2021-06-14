@@ -78,43 +78,6 @@ if ! g:minimal_rc
 
   " ultisnips
   " ---------
-  function! HandleTab() abort
-    " First, check if we're in a completion menu
-    if pumvisible()
-      return "\<C-N>"
-    endif
-    " Then, try to expand UltiSnips.
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res > 0
-      return ''
-    endif
-    " Otherwise, send Tab as usual.
-    return "\<Tab>"
-    "" Then check if we're indenting.
-    "let col = col('.') - 1
-    "if !col || getline('.')[col - 1] =~# '\s'
-    "  return "\<Tab>"
-    "endif
-    "" Finally, trigger manual completion.
-    "return ncm2#force_trigger()
-  endfunction
-
-  "inoremap <silent> <Tab> <C-R>=HandleTab()<CR>
-  "inoremap <silent><expr> <TAB>
-  "      \ pumvisible() ? '\<C-N>' :
-  "      \ <SID>check_back_space() ? '\<TAB>' :
-  "      \ deoplete#manual_complete()
-  "function! s:check_back_space() abort "{{{
-  "  let col = col('.') - 1
-  "  return !col || getline('.')[col - 1] =~# '\s'
-  "endfunction "}}}
-  "inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
-  "inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
-
-  " Press enter key to trigger snippet expansion
-  "inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-  "imap <expr> <Plug>(cr_hook) (ncm2_ultisnips#completed_is_snippet() ? "\<Plug>(ncm2_ultisnips_expand_completed)" : "")
-  "imap <expr> <Plug>(cr_do) ((empty(v:completed_item) || (!b:ncm2_enable || empty(v:completed_item.user_data))) ? "\<CR>" : (ncm2_ultisnips#completed_is_snippet() ? "\<Plug>(ncm2_ultisnips_expand_completed)" : ""))
   " See keys.vim for CR handling
   let g:UltiSnipsExpandTrigger = '<F7>'
   let g:UltiSnipsJumpForwardTrigger = '<C-L>'
@@ -123,6 +86,7 @@ if ! g:minimal_rc
   " disable by default
   let g:UltiSnipsEnableSnipMate = 0
   let g:UltiSnipsEditSplit = 'context'
+
 
   " LanguageClient-neovim
   " ---------------------
@@ -138,8 +102,6 @@ if ! g:minimal_rc
   let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
   let g:LanguageClient_settingsPath = '/home/eric/.config/nvim/lc-settings.json'
   let g:LanguageClient_diagnosticsEnable = 0
-
-  "let g:LanguageClient_serverStderr = '/tmp/ccls-lc-stderr.log'
 
 
   " ALE
@@ -192,7 +154,7 @@ if ! g:minimal_rc
   let g:pandoc#command#custom_open = 'MyPandocOpen'
 
   "let g:pandoc#command#autoexec_on_writes = 1
-  "let g:pandoc#command#autoexec_command = 'Pandoc! html -s'
+  let g:pandoc#command#autoexec_command = 'Pandoc!'
 
   function! MyPandocOpen(file)
     let file = shellescape(fnamemodify(a:file, ':p'))
