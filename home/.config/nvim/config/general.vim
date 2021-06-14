@@ -53,6 +53,8 @@ set clipboard+=unnamed
 " automatically copy visual selection to system clipboard
 "vmap <LeftRelease> "*ygv
 
+set modeline
+
 if exists('##TermOpen')
   " don't delete terminal buffers when switching buffers or closing windows
   " see https://github.com/neovim/neovim/issues/2368
@@ -118,7 +120,9 @@ set foldmethod=indent   " fold based on indent level
 "" Backups {{{
 let &backupdir = s:data_dir . '/backup'
 " Create dir
-call mkdir(&backupdir, 'p')
+if !isdirectory(&backupdir)
+  call mkdir(&backupdir, 'p')
+endif
 set backup
 " }}}
 
@@ -126,6 +130,8 @@ set backup
 " Keep undo history across sessions by storing it in a file
 let &undodir = s:data_dir . '/undo'
 " Create dir
-call mkdir(&undodir, 'p')
+if !isdirectory(&undodir)
+  call mkdir(&undodir, 'p')
+endif
 set undofile
 " }}}
