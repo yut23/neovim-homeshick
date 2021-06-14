@@ -5,6 +5,9 @@
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+" only in visual mode, not select mode
+xnoremap j gj
+xnoremap k gk
 
 "" Leader Shortcuts
 
@@ -43,7 +46,10 @@ tnoremap <Esc> <C-\><C-n>
 
 " Use C-/ to comment current line in insert mode, or a block of lines in visual mode
 nmap <C-_> <plug>NERDCommenterToggle<CR>
-vmap <C-_> <plug>NERDCommenterToggle<CR>gv
+xmap <C-_> <plug>NERDCommenterToggle<CR>gv
+" Use default mappings as well
+nmap <Leader>c<Space> <plug>NERDCommenterToggle<CR>
+xmap <Leader>c<Space> <plug>NERDCommenterToggle<CR>gv
 
 if ! g:minimal_rc
   function LC_maps()
@@ -112,6 +118,13 @@ function! HandleCR() abort
     " no completion item selected
     "echo 'no completion item selected'
     return "\<C-Y>\<CR>"
+  endif
+  " check if the selected item is a snippet, and insert it if so
+  if exists('g:ncm2_ultisnips#source')
+    if ncm2_ultisnips#completed_is_snippet()
+      "echo 'expanding snippet'
+      return "\<C-Y>\<Plug>(ncm2_ultisnips_expand_completed)"
+    endif
   endif
   " otherwise, just close the menu
   "echo 'closing menu'

@@ -1,0 +1,18 @@
+snippet #! "#!/bin/sh" b
+#!/bin/sh
+set -eu
+$0
+endsnippet
+
+snippet #!b "#!/bin/bash" b
+#!/bin/bash
+set -euo pipefail
+$0
+endsnippet
+
+snippet usage "usage()" b
+usage() {
+	echo "Usage: $(basename "\$0") ${1:[...]} ${2:<...>}"
+}
+$0
+endsnippet

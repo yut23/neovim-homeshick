@@ -76,6 +76,54 @@ if ! g:minimal_rc
     autocmd BufEnter * call ncm2#enable_for_buffer()
   augroup END
 
+  " ultisnips
+  " ---------
+  function! HandleTab() abort
+    " First, check if we're in a completion menu
+    if pumvisible()
+      return "\<C-N>"
+    endif
+    " Then, try to expand UltiSnips.
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res > 0
+      return ''
+    endif
+    " Otherwise, send Tab as usual.
+    return "\<Tab>"
+    "" Then check if we're indenting.
+    "let col = col('.') - 1
+    "if !col || getline('.')[col - 1] =~# '\s'
+    "  return "\<Tab>"
+    "endif
+    "" Finally, trigger manual completion.
+    "return ncm2#force_trigger()
+  endfunction
+
+  "inoremap <silent> <Tab> <C-R>=HandleTab()<CR>
+  "inoremap <silent><expr> <TAB>
+  "      \ pumvisible() ? '\<C-N>' :
+  "      \ <SID>check_back_space() ? '\<TAB>' :
+  "      \ deoplete#manual_complete()
+  "function! s:check_back_space() abort "{{{
+  "  let col = col('.') - 1
+  "  return !col || getline('.')[col - 1] =~# '\s'
+  "endfunction "}}}
+  "inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
+  "inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
+
+  " Press enter key to trigger snippet expansion
+  "inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+  "imap <expr> <Plug>(cr_hook) (ncm2_ultisnips#completed_is_snippet() ? "\<Plug>(ncm2_ultisnips_expand_completed)" : "")
+  "imap <expr> <Plug>(cr_do) ((empty(v:completed_item) || (!b:ncm2_enable || empty(v:completed_item.user_data))) ? "\<CR>" : (ncm2_ultisnips#completed_is_snippet() ? "\<Plug>(ncm2_ultisnips_expand_completed)" : ""))
+  " See keys.vim for CR handling
+  let g:UltiSnipsExpandTrigger = '<F7>'
+  let g:UltiSnipsJumpForwardTrigger = '<C-L>'
+  let g:UltiSnipsJumpBackwardTrigger = '<C-H>'
+  "let g:UltiSnipsRemoveSelectModeMappings = 0
+  " disable by default
+  let g:UltiSnipsEnableSnipMate = 0
+  let g:UltiSnipsEditSplit = 'context'
+
   " LanguageClient-neovim
   " ---------------------
   "let g:LanguageClient_serverCommands = {
@@ -97,7 +145,8 @@ if ! g:minimal_rc
   " ALE
   " ---
   " Open loclist automatically
-  let g:ale_open_list = 1
+  " 'on_save' avoids interrupting Ultisnips: https://github.com/dense-analysis/ale/issues/2961
+  let g:ale_open_list = 'on_save'
   " Keep it open, so that stuff doesn't move around as much
   let g:ale_keep_list_window_open = 1
   " Also keep the signs gutter open

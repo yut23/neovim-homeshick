@@ -69,6 +69,11 @@ if ! g:minimal_rc
   Plug 'ncm2/ncm2-path'
   Plug 'fgrsnau/ncm2-otherbuf'
 
+  " snippets
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+  Plug 'ncm2/ncm2-ultisnips'
+
   " haskell
   "Plug 'eagletmt/neco-ghc'
   Plug 'itchyny/vim-haskell-indent'
