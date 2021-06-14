@@ -49,6 +49,29 @@ let g:SuperTabDefaultCompletionType = '<c-n>'
 let g:ref_open = 'vsplit'
 
 
+" NERDCommenter
+" Make Toggle behave as AlignLeft
+let g:NERDDefaultAlign = 'left'
+
+
+" ack.vim
+" -------
+" Use ag if available
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+  " alias commands Ack -> Ag
+  for command in ['Ack', 'AckAdd', 'AckFromSearch', 'LAck', 'LAckAdd', 'AckFile']
+    execute 'command! -bang -nargs=* -complete=file ' . substitute(command, 'Ack', 'Ag', '') . ' ' . command . ' <args>'
+  endfor
+  for command in ['AckHelp', 'LAckHelp']
+    execute 'command! -bang -nargs=* -complete=help ' . substitute(command, 'Ack', 'Ag', '') . ' ' . command . ' <args>'
+  endfor
+  for command in ['AckWindow', 'LAckWindow']
+    execute 'command! -bang -nargs=* ' . substitute(command, 'Ack', 'Ag', '') . ' ' . command . ' <args>'
+  endfor
+endif
+
+
 if ! g:minimal_rc
   " deoplete
   " --------
@@ -154,4 +177,8 @@ if ! g:minimal_rc
       return 'xdg-open ' . file
     endif
   endfunction
+
+  " localvimrc
+  let g:localvimrc_persistence_file = expand('~/.local/share/localvimrc_persistent')
+  let g:localvimrc_persistent = 1
 endif

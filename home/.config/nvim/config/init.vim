@@ -8,6 +8,12 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 
+" from https://github.com/junegunn/vim-plug/wiki/tips#conditional-activation
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 " add help files
@@ -26,6 +32,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/unicode.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'mbbill/undotree'
+Plug 'mileszs/ack.vim', Cond(executable('ag'))
 Plug 'ntpeters/vim-better-whitespace'
 "Plug 'rickhowe/diffchar.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -38,12 +45,18 @@ Plug 'wellle/targets.vim'
 
 " syntax
 Plug 'sheerun/vim-polyglot'
+Plug 'sukima/xmledit'
 
 " completion
 Plug 'ervandew/supertab'
 
 " other
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'LucHermitte/lh-vim-lib'
+
+" local vimrc
+Plug 'embear/vim-localvimrc'
+
 if ! g:minimal_rc
   " coding
   Plug 'autozimu/LanguageClient-neovim', {
