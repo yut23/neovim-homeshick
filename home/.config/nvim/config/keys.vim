@@ -28,6 +28,8 @@ nnoremap <silent> <Leader>hi :let @/ = ""<CR>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>u :UndotreeToggle<CR>
 
+nnoremap <silent> <Leader>gg :GitGutter<CR>
+
 if ! g:minimal_rc
   nmap <Leader>al <plug>(ale_lint)
   nmap <Leader>ah <plug>(ale_hover)
@@ -50,6 +52,8 @@ if ! g:minimal_rc
       nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
       " Apparently <S-F6> is <F18> in Terminator.
       nnoremap <buffer> <silent> <F18> :call LanguageClient#textDocument_rename()<CR>
+      nnoremap <buffer> <silent> <S-F6> :call LanguageClient#textDocument_rename()<CR>
+      nnoremap <buffer> <silent> <F7> :call LanguageClient#textDocument_references()<CR>
     endif
   endfunction
   augroup LCneovim
@@ -57,6 +61,25 @@ if ! g:minimal_rc
     autocmd FileType * call LC_maps()
   augroup END
 endif
+
+" delete back word with Ctrl-Backspace (^H in most terminals) and forward word with Ctrl-Delete
+imap  <C-W>
+imap <C-BS> <C-W>
+inoremap <C-Del> <C-G>u<C-O>de
+
+" disable help.txt on F1
+nnoremap <F1> <nop>
+inoremap <F1> <nop>
+" starts ex mode
+nnoremap Q <nop>
+
+" fix inconsistency between D, C, and Y
+nnoremap Y y$
+
+" move gi (jump to last place insert mode was exited) to gI
+" use gi for `. (jump to last changed position)
+nnoremap gI gi
+nnoremap gi `.
 
 " Show unicode info with ga
 nmap ga <Plug>(UnicodeGA)
