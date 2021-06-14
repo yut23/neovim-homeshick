@@ -5,7 +5,7 @@ scriptencoding utf-8
 if has('nvim')
   let s:data_dir = stdpath('data')
 else
-  let s:data_dir = '~/.local/share/vim/'
+  let s:data_dir = $HOME . '/.local/share/vim/'
 endif
 
 "" Colors {{{
