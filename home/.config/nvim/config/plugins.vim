@@ -134,6 +134,12 @@ if ! g:minimal_rc
   let g:ale_echo_msg_format = '%severity%: [%linter%] %s% [code]%'
   let g:ale_loclist_msg_format = '[%linter%] %s% [code]%'
 
+  let g:ale_lint_on_text_changed = 'always'
+  let g:ale_lint_delay = 1000
+
+  let g:ale_python_mypy_options = '--strict --allow-untyped-defs --implicit-reexport --ignore-missing-imports'
+
+  let g:ale_cpp_cppcheck_options = '--enable=style --inline-suppr'
 
   " jedi-vim (disable everything)
   " This has to go in the vimrc instead of an ftplugin, due to how jedi-vim is
