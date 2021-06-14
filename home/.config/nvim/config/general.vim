@@ -2,7 +2,7 @@
 " vim: foldmethod=marker
 
 "" Colors {{{
-if $TERM ==# 'linux'
+if $TERM ==# 'linux' && $NVIM_GUI != 1
   " better theme for 8-color console
   if &diff
     colorscheme industry
@@ -64,7 +64,7 @@ set lazyredraw          " redraw only when necessary (faster macros)
 set scrolloff=2         " keep the cursor at least 2 lines from the top and bottom
 
 " change cursor shape in insert mode
-if $TERM !=# 'linux'
+if $TERM !=# 'linux' || $NVIM_GUI == 1
   set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 else
   set guicursor=

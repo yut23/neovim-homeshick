@@ -6,7 +6,7 @@
 set laststatus=2        " always show the status line
 set noshowmode          " airline handles this
 
-if $TERM ==# 'linux'
+if $TERM ==# 'linux' && $NVIM_GUI != 1
   " use a more visible theme in the linux console
   let g:airline_theme           = 'monochrome'
   let g:airline_powerline_fonts = 0
