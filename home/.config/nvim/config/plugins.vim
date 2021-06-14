@@ -35,7 +35,7 @@ let g:airline#extensions#wordcount#filetypes += ['pandoc']
 
 " better-whitespace
 " -----------------
-let g:better_whitespace_filetypes_blacklist=['diff', 'gitcommit', 'unite', 'qf', 'help', 'man', 'pydoc']
+let g:better_whitespace_filetypes_blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'man', 'pydoc', 'fugitive']
 
 
 " supertab

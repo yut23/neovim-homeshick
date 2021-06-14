@@ -26,7 +26,7 @@ nnoremap <Leader>z za
 nnoremap <silent> <Leader>hi :let @/ = ""<CR>
 
 nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>u :GundoToggle<CR>
+nnoremap <Leader>u :UndotreeToggle<CR>
 
 if ! g:minimal_rc
   nmap <Leader>al <plug>(ale_lint)
@@ -57,3 +57,6 @@ if ! g:minimal_rc
     autocmd FileType * call LC_maps()
   augroup END
 endif
+
+" Show unicode info with ga
+nmap ga <Plug>(UnicodeGA)

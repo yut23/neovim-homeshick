@@ -10,6 +10,9 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+" add help files
+Plug 'junegunn/vim-plug'
+
 " colorschemes
 Plug 'justinmk/molokai'
 
@@ -20,12 +23,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " utilities
+Plug 'chrisbra/unicode.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'mbbill/undotree'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'rickhowe/diffchar.vim'
+"Plug 'rickhowe/diffchar.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'sjl/gundo.vim'
 Plug 'thinca/vim-ref'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
