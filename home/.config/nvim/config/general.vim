@@ -51,6 +51,7 @@ set tabstop=2           " number of visual spaces per tab
 set softtabstop=2       " number of spaces in tab when editing
 set shiftwidth=2        " number of spaces in tab when reindenting
 set expandtab           " tabs are spaces
+set nojoinspaces        " only insert one space after [.?!] when joining lines
 " }}}
 
 "" UI Config {{{
@@ -75,6 +76,10 @@ set mouse=a
 set shortmess+=c        " don't give |ins-completion-menu| messages.
 " for ncm2
 set completeopt=noinsert,menuone,noselect
+
+" show tabs and trailing spaces as dim characters
+set listchars=tab:――→,trail:~,extends:>,nbsp:␣
+set list
 " }}}
 
 "" Searching {{{
