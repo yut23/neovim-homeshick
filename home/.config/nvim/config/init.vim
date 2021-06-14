@@ -78,6 +78,17 @@ if ! g:minimal_rc
   Plug 'honza/vim-snippets'
   Plug 'ncm2/ncm2-ultisnips'
 
+  " python
+  " jedi-vim for documentation support
+  Plug 'davidhalter/jedi-vim'
+  Plug 'ncm2/ncm2-jedi'
+
+  " Pandoc
+  Plug 'vim-pandoc/vim-pandoc'
+  Plug 'vim-pandoc/vim-pandoc-syntax'
+endif
+
+if hostname() ==? 'mandelbrot'
   " haskell
   Plug 'itchyny/vim-haskell-indent'
   Plug 'parsonsmatt/intero-neovim'
@@ -88,14 +99,8 @@ if ! g:minimal_rc
   " MIPS
   Plug 'harenome/vim-mipssyntax'
 
-  " python
-  " jedi-vim for documentation support
-  Plug 'davidhalter/jedi-vim'
-  Plug 'ncm2/ncm2-jedi'
-
-  " Pandoc
-  Plug 'vim-pandoc/vim-pandoc'
-  Plug 'vim-pandoc/vim-pandoc-syntax'
+  " udev rules
+  Plug 'wilriker/udev-vim-syntax'
 endif
 
 call plug#end()
