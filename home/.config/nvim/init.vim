@@ -2,6 +2,8 @@
 
 if hostname() ==? 'mandelbrot'
   let g:minimal_rc = 0
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
 else
   let g:minimal_rc = 1
 endif
