@@ -55,6 +55,7 @@ if ! g:minimal_rc
   " Use deoplete.
   let g:deoplete#enable_at_startup = 1
   augroup deopleteAutoClose
+    autocmd!
     autocmd CompleteDone * pclose " To close preview window of deoplete automagically
   augroup END
 
@@ -62,7 +63,7 @@ if ! g:minimal_rc
   if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
   endif
-  let g:deoplete#omni#input_patterns.erlang = '[^. *\t]:\w*'
+  call deoplete#custom#source('omni', 'input_patterns', {'erlang': '[^. *\t]:\w*'})
 
   " deoplete-jedi
   let g:deoplete#sources#jedi#show_docstring = 1
@@ -80,7 +81,7 @@ if ! g:minimal_rc
         \ }
 
   let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-  let g:LanguageClient_settingsPath = '/home/eric/.config/nvim/ccls-settings.json'
+  let g:LanguageClient_settingsPath = '/home/eric/.config/nvim/lc-settings.json'
   let g:LanguageClient_diagnosticsEnable = 0
 
   "let g:LanguageClient_serverStderr = '/tmp/ccls-lc-stderr.log'

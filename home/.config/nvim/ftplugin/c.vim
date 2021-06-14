@@ -15,6 +15,4 @@ let b:ale_fixers = ['clang-format']
 
 let b:ale_fix_on_save = 1
 
-let g:ale_c_ccls_init_options = {
-      \ 'cacheDirectory': '/tmp/ccls'
-      \ }
+let g:ale_c_ccls_init_options = {'cache': {'directory': '/tmp/ccls'}}

@@ -34,7 +34,8 @@ if ! g:minimal_rc
 
   " Automatically reload on write
   augroup interoReload
-    au BufWritePost *.hs InteroReload
+    autocmd!
+    autocmd BufWritePost *.hs InteroReload
   augroup END
   " Disable neomake automake on write
   "au FileType haskell call neomake#configure#automake_for_buffer('')

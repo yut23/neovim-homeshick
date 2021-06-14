@@ -51,7 +51,7 @@ if ! g:minimal_rc
       \ 'do': 'bash install.sh',
       \ }
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
 
   " haskell
   "Plug 'eagletmt/neco-ghc'

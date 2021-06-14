@@ -1,0 +1,7 @@
+{
+  "ccls": {
+    "cache": {
+      "directory": "/tmp/ccls"
+    }
+  }
+}

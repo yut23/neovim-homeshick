@@ -1,5 +1,6 @@
 " config/general.vim
 " vim: foldmethod=marker
+scriptencoding utf-8
 
 "" Colors {{{
 if $TERM ==# 'linux' && $NVIM_GUI != 1
