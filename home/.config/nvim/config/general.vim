@@ -2,6 +2,12 @@
 " vim: foldmethod=marker
 scriptencoding utf-8
 
+if has('nvim')
+  let s:data_dir = stdpath('data')
+else
+  let s:data_dir = '~/.local/share/vim/'
+endif
+
 "" Colors {{{
 if $TERM ==# 'linux' && $NVIM_GUI != 1
   " better theme for 8-color console
@@ -13,11 +19,17 @@ if $TERM ==# 'linux' && $NVIM_GUI != 1
 else
   " pretty colors everywhere else
   colorscheme molokai
-  if $TERM ==# 'rxvt-unicode-256color'
-    " urxvt doesn't like true color yet
-    set notermguicolors
-  else
-    set termguicolors
+  if has('termguicolors')
+    if $TERM ==# 'rxvt-unicode-256color' && $NVIM_GUI != 1
+      " urxvt doesn't like true color yet
+      set notermguicolors
+    else
+      if $TERM ==# 'tmux-256color' && !has('nvim')
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      endif
+      set termguicolors
+    endif
   endif
 endif
 set background=dark
@@ -41,9 +53,14 @@ set clipboard+=unnamed
 " automatically copy visual selection to system clipboard
 "vmap <LeftRelease> "*ygv
 
-" don't delete terminal buffers when switching buffers or closing windows
-" see https://github.com/neovim/neovim/issues/2368
-autocmd TermOpen * set bufhidden=hide
+if exists('##TermOpen')
+  " don't delete terminal buffers when switching buffers or closing windows
+  " see https://github.com/neovim/neovim/issues/2368
+  autocmd TermOpen * set bufhidden=hide
+elseif exists('##TerminalOpen')
+  " vim 8.1+ version, from terminal.txt
+  autocmd TerminalOpen * if &buftype ==# 'terminal' | setlocal bufhidden=hide | endif
+endif
 " }}}
 
 "" Spaces and Tabs {{{
@@ -78,7 +95,11 @@ set shortmess+=c        " don't give |ins-completion-menu| messages.
 set completeopt=noinsert,menuone,noselect
 
 " show tabs and trailing spaces as dim characters
-set listchars=tab:――→,trail:~,extends:>,nbsp:␣
+if has('patch-8.1.759') || has('nvim-0.4.0')
+  set listchars=tab:――→,trail:~,extends:>,nbsp:␣
+else
+  set listchars=tab:→\ ,trail:~,extends:>,nbsp:␣
+endif
 set list
 " }}}
 
@@ -95,7 +116,7 @@ set foldmethod=indent   " fold based on indent level
 " }}}
 
 "" Backups {{{
-set backupdir=~/.local/share/nvim/backup
+let &backupdir = s:data_dir . '/backup'
 " Create dir
 call mkdir(&backupdir, 'p')
 set backup
@@ -103,7 +124,7 @@ set backup
 
 "" Undo {{{
 " Keep undo history across sessions by storing it in a file
-set undodir=~/.local/share/nvim/undo
+let &undodir = s:data_dir . '/undo'
 " Create dir
 call mkdir(&undodir, 'p')
 set undofile

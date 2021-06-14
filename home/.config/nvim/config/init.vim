@@ -1,9 +1,9 @@
 " config/init.vim
 
 " automatically install vim-plug
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   augroup vimplug_install
     autocmd!
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -17,7 +17,7 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin((has('nvim') ? stdpath('data') : '~/.vim') . '/plugged')
 
 " add help files
 Plug 'junegunn/vim-plug'
@@ -65,6 +65,7 @@ if ! g:minimal_rc
       \ }
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
   Plug 'dense-analysis/ale'
 
   " ncm2 sources

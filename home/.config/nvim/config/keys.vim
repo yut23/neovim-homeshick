@@ -42,7 +42,9 @@ endif
 "" Other Shortcuts
 
 " Leave terminal mode with escape
-tnoremap <Esc> <C-\><C-n>
+if exists(':tnoremap')
+  tnoremap <Esc> <C-\><C-N>
+endif
 
 " Use C-/ to comment current line in insert mode, or a block of lines in visual mode
 nmap <C-_> <plug>NERDCommenterToggle<CR>
