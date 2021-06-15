@@ -94,7 +94,9 @@ set mouse=a
 
 set shortmess+=c        " don't give |ins-completion-menu| messages.
 " for ncm2
-set completeopt=noinsert,menuone,noselect
+if has('+insert_expand')
+  set completeopt=noinsert,menuone,noselect
+endif
 
 " show tabs and trailing spaces as dim characters
 if has('patch-8.1.759') || has('nvim-0.4.0')
