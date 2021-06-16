@@ -94,7 +94,7 @@ set mouse=a
 
 set shortmess+=c        " don't give |ins-completion-menu| messages.
 " for ncm2
-if has('+insert_expand')
+if has('+insert_expand') || has('nvim')
   set completeopt=noinsert,menuone,noselect
 endif
 
