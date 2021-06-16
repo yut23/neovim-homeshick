@@ -214,6 +214,12 @@ hi NonText         ctermfg=239
 
 hi SpecialKey      ctermfg=239
 
+" Use terminal colors for fugitive diffs
+hi diffRemoved     guifg=#D51C14
+hi diffRemoved     ctermfg=1
+hi diffAdded       guifg=#00BF00
+hi diffAdded       ctermfg=2
+
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
