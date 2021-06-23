@@ -63,6 +63,7 @@ elseif exists('##TerminalOpen')
   " vim 8.1+ version, from terminal.txt
   autocmd TerminalOpen * if &buftype ==# 'terminal' | setlocal bufhidden=hide | endif
 endif
+
 " }}}
 
 "" Spaces and Tabs {{{
@@ -89,6 +90,19 @@ if $TERM !=# 'linux' || $NVIM_GUI == 1
   set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 else
   set guicursor=
+endif
+if !has('nvim')
+  if $TEMU ==# 'konsole'
+    let &t_ti.="\e]50;CursorShape=0\007"
+    let &t_SI.="\e]50;CursorShape=1\007"
+    let &t_EI.="\e]50;CursorShape=0\007"
+    let &t_te.="\e]50;CursorShape=0\007"
+  elseif $TERM !=# 'linux' && $TERM !~# 'rxvt-unicode.*'
+    let &t_ti.="\e[1 q"
+    let &t_SI.="\e[5 q"
+    let &t_EI.="\e[1 q"
+    let &t_te.="\e[5 q"
+  endif
 endif
 set mouse=a
 
