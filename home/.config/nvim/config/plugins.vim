@@ -79,7 +79,7 @@ if ! g:minimal_rc
   " ultisnips
   " ---------
   " See keys.vim for CR handling
-  let g:UltiSnipsExpandTrigger = '<F7>'
+  let g:UltiSnipsExpandTrigger = '<F13>'
   let g:UltiSnipsJumpForwardTrigger = '<C-L>'
   let g:UltiSnipsJumpBackwardTrigger = '<C-H>'
   "let g:UltiSnipsRemoveSelectModeMappings = 0
