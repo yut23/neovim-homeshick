@@ -8,7 +8,7 @@
 "let b:did_ftplugin = 1
 
 " ALE linters
-let b:ale_linters = ['pylint', 'mypy', 'flake8']
+let b:ale_linters = ['pylint', 'mypy']
 let b:ale_fixers = ['black', 'isort']
 
 let b:ale_fix_on_save = 1

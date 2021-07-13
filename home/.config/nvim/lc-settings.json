@@ -3,5 +3,15 @@
     "cache": {
       "directory": "/tmp/ccls"
     }
+  },
+  "pyls": {
+    "plugins": {
+      "pycodestyle": {
+        "enabled": false
+      },
+      "pyflakes": {
+        "enabled": false
+      }
+    }
   }
 }
