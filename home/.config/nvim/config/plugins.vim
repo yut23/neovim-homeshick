@@ -100,7 +100,7 @@ if ! g:minimal_rc
         \ }
 
   let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-  let g:LanguageClient_settingsPath = '/home/eric/.config/nvim/lc-settings.json'
+  let g:LanguageClient_settingsPath = expand('~/.config/nvim/lc-settings.json')
   let g:LanguageClient_diagnosticsEnable = 0
 
 
@@ -138,7 +138,7 @@ if ! g:minimal_rc
 
   " Add support for https://github.com/Koihik/LuaFormatter
   call ale#fix#registry#Add('luaformatter', 'ale#fixers#luaformatter#Fix', ['lua'], 'Fix Lua files with LuaFormatter.')
-  let g:ale_lua_luaformatter_executable = '/home/eric/.luarocks/bin/lua-format'
+  let g:ale_lua_luaformatter_executable = expand('~/.luarocks/bin/lua-format')
 
   " jedi-vim (disable everything)
   " This has to go in the vimrc instead of an ftplugin, due to how jedi-vim is
