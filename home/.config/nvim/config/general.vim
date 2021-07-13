@@ -151,3 +151,8 @@ if !isdirectory(&undodir)
 endif
 set undofile
 " }}}
+
+"" Commands {{{
+" Open the config folder for editing
+command Cfg e ~/.config/nvim | normal 3jO
+" }}}
