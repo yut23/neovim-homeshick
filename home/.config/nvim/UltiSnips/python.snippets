@@ -125,8 +125,6 @@ def format_return(style):
 		return "@return: TODO"
 	elif style in (NORMAL, SPHINX, JEDI):
 		return ":returns: TODO"
-	elif style == GOOGLE:
-		return "Returns: TODO"
 
 
 def write_docstring_args(args, snip):
@@ -230,9 +228,14 @@ def write_function_docstring(t, snip, start):
 		snip += 'Returns'
 		snip += '-------'
 		snip += 'TODO'
+	elif style == GOOGLE:
+		snip += 'Returns:'
+		snip.shift()
+		snip += 'TODO'
+		snip.unshift()
 	else:
 		snip += format_return(style)
-	snip.rv += '\n' + snip.mkline('', indent='')
+	#snip.rv += '\n' + snip.mkline('', indent='')
 	snip += triple_quotes(snip)
 
 def get_dir_and_file_name(snip):
@@ -362,7 +365,8 @@ $1 = property(**$1(), doc=$1.__doc__)
 endsnippet
 
 
-snippet contain "methods for emulating a container type" bm
+clearsnippets contain
+snippet __contain "methods for emulating a container type" bm
 def __len__(self) -> int:
 	${1:pass}
 
@@ -386,7 +390,8 @@ def __contains__(self, item: $3) -> bool:
 endsnippet
 
 
-snippet attr "methods for customizing attribute access" bm
+clearsnippets attr
+snippet __attr "methods for customizing attribute access" bm
 def __getattr__(self, name: str) -> ${1:Any}:
 	${1:pass}
 
@@ -398,7 +403,8 @@ def __delattr__(self, name: str) -> None:
 endsnippet
 
 
-snippet cmp "methods implementing rich comparison" bm
+clearsnippets cmp
+snippet __cmp "methods implementing rich comparison" bm
 def __eq__(self, other) -> bool:
 	${1:pass}
 
@@ -422,7 +428,8 @@ def __cmp__(self, other) -> bool:
 endsnippet
 
 
-snippet repr "methods implementing string representation" bm
+clearsnippets repr
+snippet __repr "methods implementing string representation" bm
 def __repr__(self) -> str:
 	${1:pass}
 
