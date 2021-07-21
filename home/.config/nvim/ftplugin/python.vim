@@ -19,6 +19,8 @@ let g:ale_python_black_use_global = 1
 let g:ale_python_isort_executable = 'isort'
 let g:ale_python_isort_use_global = 1
 
+let g:ale_python_isort_options = '--profile black'
+
 " mypy
 " We have other linters to take care of syntax errors
 let b:ale_python_mypy_ignore_invalid_syntax = 1
