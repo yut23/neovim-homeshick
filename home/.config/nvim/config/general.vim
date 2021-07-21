@@ -2,11 +2,12 @@
 " vim: foldmethod=marker
 scriptencoding utf-8
 
-if has('nvim')
-  let s:data_dir = stdpath('data')
-else
-  let s:data_dir = $HOME . '/.local/share/vim/'
-endif
+let s:data_dir = $HOME . '/.local/share/nvim/'
+"if has('nvim')
+"  let s:data_dir = stdpath('data')
+"else
+"  let s:data_dir = $HOME . '/.local/share/vim/'
+"endif
 
 "" Colors {{{
 if $TERM ==# 'linux' && $NVIM_GUI != 1
@@ -144,7 +145,13 @@ set backup
 
 "" Undo {{{
 " Keep undo history across sessions by storing it in a file
-let &undodir = s:data_dir . '/undo'
+if has('nvim-0.5')
+  " New format in https://github.com/neovim/neovim/pull/13973 (f42e932,
+  " 2021-04-13).
+  let &undodir = s:data_dir . '/undo2'
+else
+  let &undodir = s:data_dir . '/undo'
+endif
 " Create dir
 if !isdirectory(&undodir)
   call mkdir(&undodir, 'p')
