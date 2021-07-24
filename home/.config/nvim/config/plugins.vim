@@ -32,6 +32,12 @@ let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#wordcount#filetypes = ['help', 'markdown', 'rst', 'org', 'text', 'asciidoc', 'tex', 'mail']
 let g:airline#extensions#wordcount#filetypes += ['pandoc']
 
+" Revert https://github.com/vim-airline/vim-airline/commit/62e7fc6
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  let a:palette.tabline = get(a:palette, 'tabline', {})
+  let a:palette.tabline.airline_tab = a:palette.normal.airline_b
+endfunction
 
 " better-whitespace
 " -----------------
