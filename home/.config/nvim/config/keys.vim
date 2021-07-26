@@ -1,21 +1,26 @@
 " config/keys.vim
 
-" Fix mappings in vim inside tmux
-if !has('nvim') && $TERM ==# 'tmux-256color'
-  " normal, visual, select, and operator-pending
-  map <ESC>[1;5D <C-Left>
-  " insert and command-line
-  map! <ESC>[1;5D <C-Left>
-  map <ESC>[1;5C <C-Right>
-  map! <ESC>[1;5C <C-Right>
-  map <ESC>[1;5H <C-Home>
-  map! <ESC>[1;5H <C-Home>
-  map <ESC>[1;5F <C-End>
-  map! <ESC>[1;5F <C-End>
-  map <ESC>[3;2~ <S-Del>
-  map! <ESC>[3;2~ <S-Del>
-  map <ESC>[3;5~ <C-Del>
-  map! <ESC>[3;5~ <C-Del>
+" Fix mappings in vim
+if !has('nvim')
+  if $TERM ==# 'tmux-256color'
+    " normal, visual, select, and operator-pending
+    map <ESC>[1;5D <C-Left>
+    " insert and command-line
+    map! <ESC>[1;5D <C-Left>
+    map <ESC>[1;5C <C-Right>
+    map! <ESC>[1;5C <C-Right>
+    map <ESC>[1;5H <C-Home>
+    map! <ESC>[1;5H <C-Home>
+    map <ESC>[1;5F <C-End>
+    map! <ESC>[1;5F <C-End>
+    map <ESC>[3;2~ <S-Del>
+    map! <ESC>[3;2~ <S-Del>
+    map <ESC>[3;5~ <C-Del>
+    map! <ESC>[3;5~ <C-Del>
+  endif
+  " Custom ctrl-backspace (CSI u)
+  map <ESC>[127;5u <C-BS>
+  map! <ESC>[127;5u <C-BS>
 endif
 
 "" Movement Shortcuts
