@@ -127,22 +127,24 @@ function! HandleCR() abort
   if !pumvisible()
     return "\<CR>"
   endif
-  if empty(v:completed_item) || !b:ncm2_enable
-    " no info about whether a completion item is selected, so close menu and insert <CR>
-    "echo 'no info'
-    return "\<C-Y>\<CR>"
-  endif
-  " now we know v:completed_item is not empty and ncm2 is enabled
-  if empty(v:completed_item.user_data)
-    " no completion item selected
-    "echo 'no completion item selected'
-    return "\<C-Y>\<CR>"
-  endif
-  " check if the selected item is a snippet, and insert it if so
-  if exists('g:ncm2_ultisnips#source')
-    if ncm2_ultisnips#completed_is_snippet()
-      "echo 'expanding snippet'
-      return "\<C-Y>\<Plug>(ncm2_ultisnips_expand_completed)"
+  if exists('b:ncm2_enable')
+    if empty(v:completed_item) || !b:ncm2_enable
+      " no info about whether a completion item is selected, so close menu and insert <CR>
+      "echo 'no info'
+      return "\<C-Y>\<CR>"
+    endif
+    " now we know v:completed_item is not empty and ncm2 is enabled
+    if empty(v:completed_item.user_data)
+      " no completion item selected
+      "echo 'no completion item selected'
+      return "\<C-Y>\<CR>"
+    endif
+    " check if the selected item is a snippet, and insert it if so
+    if exists('g:ncm2_ultisnips#source')
+      if ncm2_ultisnips#completed_is_snippet()
+        "echo 'expanding snippet'
+        return "\<C-Y>\<Plug>(ncm2_ultisnips_expand_completed)"
+      endif
     endif
   endif
   " otherwise, just close the menu
