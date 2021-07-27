@@ -100,8 +100,8 @@ if ! g:minimal_rc
 endif
 
 " delete back word with Ctrl-Backspace (^H in most terminals) and forward word with Ctrl-Delete
-imap  <C-W>
-imap <C-BS> <C-W>
+map!  <C-W>
+map! <C-BS> <C-W>
 inoremap <C-Del> <C-G>u<C-O>de
 
 " disable help.txt on F1
