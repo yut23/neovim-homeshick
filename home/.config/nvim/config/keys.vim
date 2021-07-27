@@ -3,20 +3,17 @@
 " Fix mappings in vim
 if !has('nvim')
   if $TERM ==# 'tmux-256color'
-    " normal, visual, select, and operator-pending
-    map <ESC>[1;5D <C-Left>
-    " insert and command-line
-    map! <ESC>[1;5D <C-Left>
-    map <ESC>[1;5C <C-Right>
-    map! <ESC>[1;5C <C-Right>
-    map <ESC>[1;5H <C-Home>
-    map! <ESC>[1;5H <C-Home>
-    map <ESC>[1;5F <C-End>
-    map! <ESC>[1;5F <C-End>
-    map <ESC>[3;2~ <S-Del>
-    map! <ESC>[3;2~ <S-Del>
-    map <ESC>[3;5~ <C-Del>
-    map! <ESC>[3;5~ <C-Del>
+    set <xUp>=[@;*A
+    set <xDown>=[@;*B
+    set <xRight>=[@;*C
+    set <xLeft>=[@;*D
+    set <xHome>=[1;*H
+    set <xEnd>=[1;*F
+    set <xF1>=[1;*P
+    set <xF2>=[1;*Q
+    set <xF3>=[1;*R
+    set <xF4>=[1;*S
+    set <Del>=[3;*~
   endif
   " Custom ctrl-backspace (CSI u)
   map <ESC>[127;5u <C-BS>
