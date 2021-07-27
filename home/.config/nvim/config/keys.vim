@@ -15,9 +15,18 @@ if !has('nvim')
     set <xF4>=[1;*S
     set <Del>=[3;*~
   endif
-  " Custom ctrl-backspace (CSI u)
-  map <ESC>[127;5u <C-BS>
-  map! <ESC>[127;5u <C-BS>
+  if !has('patch-8.1.2134') || has('patch-8.1.2145')
+    " Custom libvte ctrl-backspace (xterm modifyOtherKeys / CSI u format)
+    " Patch 2134 adds built-in handling for modifyOtherKeys, so everything
+    " just works, but 2145 breaks mappings for C-H, C-L, etc. after C-BS is
+    " pressed, because vim expects that all keys will generate the modified
+    " codes (which is not the case for my simple libvte patch).
+    set <BS>=[127;*u
+    " normal, visual, select, and operator-pending
+    map  <BS>
+    " insert and command-line
+    map!  <BS>
+  end
 endif
 
 "" Movement Shortcuts
