@@ -158,3 +158,6 @@ function! HandleCR() abort
   return "\<C-Y>"
 endfunction
 imap <expr> <CR> HandleCR()
+
+" Digraphs
+digraph -^ 8593  " UPWARDS ARROW
