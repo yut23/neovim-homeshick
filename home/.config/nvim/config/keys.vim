@@ -3,10 +3,10 @@
 " Fix mappings in vim
 if !has('nvim')
   if $TERM =~# 'tmux\|screen'
-    set <xUp>=[@;*A
-    set <xDown>=[@;*B
-    set <xRight>=[@;*C
-    set <xLeft>=[@;*D
+    set <xUp>=[1;*A
+    set <xDown>=[1;*B
+    set <xRight>=[1;*C
+    set <xLeft>=[1;*D
     set <xHome>=[1;*H
     set <xEnd>=[1;*F
     set <xF1>=[1;*P
