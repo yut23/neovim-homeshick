@@ -118,7 +118,7 @@ if has('patch-7.4.314')
   set shortmess+=c        " don't give |ins-completion-menu| messages.
 endif
 " for ncm2
-if has('+insert_expand') || has('nvim')
+if exists('+completeopt') && has('patch-7.4.775')
   set completeopt=noinsert,menuone,noselect
 endif
 
