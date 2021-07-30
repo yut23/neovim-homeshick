@@ -25,7 +25,7 @@ else
       " urxvt doesn't like true color yet
       set notermguicolors
     else
-      if $TERM ==# 'tmux-256color' && !has('nvim')
+      if $TERM =~# 'tmux\|screen' && !has('nvim')
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       endif

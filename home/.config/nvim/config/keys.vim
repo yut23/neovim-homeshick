@@ -2,7 +2,7 @@
 
 " Fix mappings in vim
 if !has('nvim')
-  if $TERM ==# 'tmux-256color'
+  if $TERM =~# 'tmux\|screen'
     set <xUp>=[@;*A
     set <xDown>=[@;*B
     set <xRight>=[@;*C
