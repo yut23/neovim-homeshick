@@ -53,6 +53,13 @@ set ttimeoutlen=50
 set clipboard+=unnamed
 " automatically copy visual selection to system clipboard
 "vmap <LeftRelease> "*ygv
+" enable bracketed paste in vim
+if !has('nvim') && $TERM =~# 'tmux\|screen' && exists('&t_BE')
+  let &t_BE = "\e[?2004h"
+  let &t_BD = "\e[?2004l"
+  exec "set t_PS=\e[200~"
+  exec "set t_PE=\e[201~"
+endif
 
 set modeline
 
