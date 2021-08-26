@@ -63,9 +63,9 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <silent> <Leader>gg :GitGutter<CR>
 
 if ! g:minimal_rc
-  nmap <Leader>al <plug>(ale_lint)
-  nmap <Leader>ah <plug>(ale_hover)
-  nmap <Leader>ar <plug>(ale_find_references)
+  nmap <Leader>al <Plug>(ale_lint)
+  nmap <Leader>ah <Plug>(ale_hover)
+  nmap <Leader>ar <Plug>(ale_find_references)
 endif
 
 "" Other Shortcuts
@@ -76,11 +76,11 @@ if exists(':tnoremap')
 endif
 
 " Use C-/ to comment current line in insert mode, or a block of lines in visual mode
-nmap <C-_> <plug>NERDCommenterToggle<CR>
-xmap <C-_> <plug>NERDCommenterToggle<CR>gv
+nmap <C-_> <Plug>NERDCommenterToggle<CR>
+xmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 " Use default mappings as well
-nmap <Leader>c<Space> <plug>NERDCommenterToggle<CR>
-xmap <Leader>c<Space> <plug>NERDCommenterToggle<CR>gv
+nmap <Leader>c<Space> <Plug>NERDCommenterToggle<CR>
+xmap <Leader>c<Space> <Plug>NERDCommenterToggle<CR>gv
 
 if ! g:minimal_rc
   function LC_maps()

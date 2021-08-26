@@ -39,6 +39,7 @@ function! AirlineThemePatch(palette)
   let a:palette.tabline.airline_tab = a:palette.normal.airline_b
 endfunction
 
+
 " better-whitespace
 " -----------------
 let g:better_whitespace_filetypes_blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'man', 'pydoc', 'fugitive']
@@ -51,6 +52,7 @@ let g:ref_open = 'vsplit'
 
 
 " NERDCommenter
+" -------------
 " Make Toggle behave as AlignLeft
 let g:NERDDefaultAlign = 'left'
 
