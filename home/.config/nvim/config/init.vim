@@ -35,6 +35,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/unicode.vim'
 Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/vim-peekaboo'
+Plug 'justinmk/vim-sneak'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim', Cond(executable('ag'))
 Plug 'ntpeters/vim-better-whitespace'
