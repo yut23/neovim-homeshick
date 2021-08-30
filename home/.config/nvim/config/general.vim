@@ -61,6 +61,11 @@ if !has('nvim') && $TERM =~# 'tmux\|screen' && exists('&t_BE')
   exec "set t_PE=\e[201~"
 endif
 
+" hooks for clipboard syncing
+if filereadable(expand('~/.tmux/clipboard/vimhooks.vim'))
+  source ~/.tmux/clipboard/vimhooks.vim
+endif
+
 set modeline
 
 if exists('##TermOpen')
