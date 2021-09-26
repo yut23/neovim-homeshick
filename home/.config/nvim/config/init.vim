@@ -92,6 +92,9 @@ if ! g:minimal_rc
 endif
 
 if hostname() ==? 'mandelbrot'
+  " ActionScript
+  Plug 'jeroenbourgois/vim-actionscript'
+
   " haskell
   Plug 'itchyny/vim-haskell-indent'
   Plug 'parsonsmatt/intero-neovim'
