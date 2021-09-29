@@ -139,6 +139,8 @@ set list
 "" Searching {{{
 set ignorecase          " See below
 set smartcase           " Only case-sensitive if there are uppercase letters
+
+set hlsearch
 " }}}
 
 "" Folding {{{
