@@ -57,6 +57,9 @@ Plug 'sukima/xmledit'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'LucHermitte/lh-vim-lib'
 
+Plug 'moll/vim-bbye' " optional dependency
+Plug 'aymericbeaumet/vim-symlink'
+
 " local vimrc
 Plug 'embear/vim-localvimrc'
 
