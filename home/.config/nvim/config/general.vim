@@ -118,6 +118,15 @@ if !has('nvim')
   endif
 endif
 set mouse=a
+" From :help 'tmux-integration'
+if $TERM =~# 'tmux\|screen' && !has('nvim') && !has('gui_running')
+  " Better mouse support, see :help 'ttymouse'
+  set ttymouse=sgr
+
+  " Enable focus event tracking, see :help xterm-focus-event
+  let &t_fe = "\<Esc>[?1004h"
+  let &t_fd = "\<Esc>[?1004l"
+endif
 
 if has('patch-7.4.314')
   set shortmess+=c        " don't give |ins-completion-menu| messages.
