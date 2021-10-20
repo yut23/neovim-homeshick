@@ -124,8 +124,10 @@ if $TERM =~# 'tmux\|screen' && !has('nvim') && !has('gui_running')
   set ttymouse=sgr
 
   " Enable focus event tracking, see :help xterm-focus-event
-  let &t_fe = "\<Esc>[?1004h"
-  let &t_fd = "\<Esc>[?1004l"
+  if exists('&t_fe')
+    let &t_fe = "\<Esc>[?1004h"
+    let &t_fd = "\<Esc>[?1004l"
+  endif
 endif
 
 if has('patch-7.4.314')
