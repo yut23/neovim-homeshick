@@ -8,6 +8,7 @@ let s:data_dir = $HOME . '/.local/share/nvim/'
 "else
 "  let s:data_dir = $HOME . '/.local/share/vim/'
 "endif
+let s:vim_tmux = !has('nvim') && $TERM =~# 'tmux\|screen'
 
 "" Colors {{{
 if $TERM ==# 'linux' && $NVIM_GUI != 1
@@ -25,7 +26,7 @@ else
       " urxvt doesn't like true color yet
       set notermguicolors
     else
-      if $TERM =~# 'tmux\|screen' && !has('nvim')
+      if s:vim_tmux
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       endif
@@ -53,12 +54,22 @@ set ttimeoutlen=50
 set clipboard+=unnamed
 " automatically copy visual selection to system clipboard
 "vmap <LeftRelease> "*ygv
-" enable bracketed paste in vim
-if !has('nvim') && $TERM =~# 'tmux\|screen' && exists('&t_BE')
-  let &t_BE = "\e[?2004h"
-  let &t_BD = "\e[?2004l"
-  exec "set t_PS=\e[200~"
-  exec "set t_PE=\e[201~"
+if s:vim_tmux
+  " enable bracketed paste in vim
+  if exists('&t_BE')
+    " all these options were added in patch 8.0.0210
+    let &t_BE = "\e[?2004h"
+    let &t_BD = "\e[?2004l"
+    let &t_PS = "\e[200~"
+    let &t_PE = "\e[201~"
+  endif
+  " enable saving and restoring window titles
+  if exists('&t_ST')
+    let &t_ST = "\e[22;2t"
+    let &t_RT = "\e[23;2t"
+    let &t_Si = "\e[22;1t"
+    let &t_Ri = "\e[23;1t"
+  endif
 endif
 
 " hooks for clipboard syncing
@@ -105,21 +116,26 @@ else
   set guicursor=
 endif
 if !has('nvim')
-  if $TEMU ==# 'konsole'
-    let &t_ti.="\e]50;CursorShape=0\007"
-    let &t_SI.="\e]50;CursorShape=1\007"
-    let &t_EI.="\e]50;CursorShape=0\007"
-    let &t_te.="\e]50;CursorShape=0\007"
-  elseif $TERM !=# 'linux' && $TERM !~# 'rxvt-unicode.*'
-    let &t_ti.="\e[1 q"
-    let &t_SI.="\e[5 q"
-    let &t_EI.="\e[1 q"
-    let &t_te.="\e[5 q"
+  if $TERM !=# 'linux'
+    " append to these options, in case there's already some other control sequences
+    " at startup/exit
+    let s:block_cursor = "\e[1 q"
+    let s:bar_cursor = "\e[5 q"
+    if exists('&t_TI')
+      let &t_TI .= s:block_cursor
+      let &t_TE .= s:bar_cursor
+    else
+      let &t_ti .= s:block_cursor
+      let &t_te .= s:bar_cursor
+    endif
+    " start/end insert mode
+    let &t_SI .= s:bar_cursor
+    let &t_EI .= s:block_cursor
   endif
 endif
 set mouse=a
 " From :help 'tmux-integration'
-if $TERM =~# 'tmux\|screen' && !has('nvim') && !has('gui_running')
+if s:vim_tmux && !has('gui_running')
   " Better mouse support, see :help 'ttymouse'
   set ttymouse=sgr
 
