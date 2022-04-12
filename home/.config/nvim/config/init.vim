@@ -50,6 +50,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 
 " syntax
+let g:polyglot_disabled = ['zinit']
 Plug 'sheerun/vim-polyglot'
 Plug 'sukima/xmledit'
 
