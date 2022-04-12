@@ -42,6 +42,8 @@ endfunction
 
 " better-whitespace
 " -----------------
+" disable the red highlight, since we have 'list' enabled
+let g:better_whitespace_enabled = 0
 let g:better_whitespace_filetypes_blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'man', 'pydoc', 'fugitive']
 
 
