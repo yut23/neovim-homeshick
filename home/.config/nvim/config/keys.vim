@@ -90,6 +90,7 @@ if ! g:minimal_rc
       " Apparently <S-F6> is <F18> in Terminator.
       nnoremap <buffer> <silent> <F18> :call LanguageClient#textDocument_rename()<CR>
       nnoremap <buffer> <silent> <S-F6> :call LanguageClient#textDocument_rename()<CR>
+      nnoremap <buffer> <silent> <Leader>r :call LanguageClient#textDocument_rename()<CR>
       nnoremap <buffer> <silent> <F7> :call LanguageClient#textDocument_references()<CR>
     endif
   endfunction
