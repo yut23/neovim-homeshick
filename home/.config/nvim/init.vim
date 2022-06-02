@@ -4,6 +4,8 @@ if hostname() ==? 'mandelbrot' || hostname() ==? 'blackwidow' || hostname() ==? 
   let g:minimal_rc = 0
   let g:python_host_prog = '/usr/bin/python2'
   let g:python3_host_prog = '/usr/bin/python3'
+elseif $system_name ==? 'cantor'
+  let g:minimal_rc = 0
 else
   let g:minimal_rc = 1
 endif
