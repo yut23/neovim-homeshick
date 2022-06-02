@@ -1,6 +1,6 @@
 " ~/.config/nvim/init.vim
 
-if hostname() ==? 'mandelbrot' || hostname() ==? 'blackwidow'
+if hostname() ==? 'mandelbrot' || hostname() ==? 'blackwidow' || hostname() ==? 'xrb'
   let g:minimal_rc = 0
   let g:python_host_prog = '/usr/bin/python2'
   let g:python3_host_prog = '/usr/bin/python3'
