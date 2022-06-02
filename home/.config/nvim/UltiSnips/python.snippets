@@ -121,19 +121,21 @@ def get_style(snip):
 	else: return NORMAL
 
 
-def format_arg(arg, style):
+def format_arg(snip, arg, style):
 	if style == DOXYGEN:
-		return "@param %s TODO" % arg
+		snip += f"@param {arg} TODO"
 	elif style == SPHINX:
-		return ":param %s: TODO" % arg
+		snip += f":param {arg}: TODO"
+		if arg.type is None:
+			snip += f":type {arg}: TODO"
 	elif style == NORMAL:
-		return ":%s: TODO" % arg
+		snip += f":{arg}: TODO"
 	elif style == GOOGLE:
-		return "%s%s: TODO" % (arg, " (TODO)" if arg.type is None else "")
+		snip += "{}{}: TODO".format(arg, " (TODO)" if arg.type is None else "")
 	elif style == JEDI:
-		return ":type %s: TODO" % arg
+		snip += f":type {arg}: TODO"
 	elif style == NUMPY:
-		return "%s : TODO" % arg
+		snip += f"{arg} : TODO"
 
 
 def format_return(style):
@@ -158,7 +160,7 @@ def write_docstring_args(args, snip):
 		write_numpy_docstring_args(args, snip)
 	else:
 		for arg in args:
-			snip += format_arg(arg, style)
+			format_arg(snip, arg, style)
 
 
 def write_google_docstring_args(args, snip):
@@ -169,7 +171,7 @@ def write_google_docstring_args(args, snip):
 		snip += "Args:"
 		snip.shift()
 		for arg in args:
-			snip += format_arg(arg, GOOGLE)
+			format_arg(snip, arg, GOOGLE)
 		snip.unshift()
 		snip.rv += '\n' + snip.mkline('', indent='')
 
@@ -177,7 +179,7 @@ def write_google_docstring_args(args, snip):
 		snip += "Kwargs:"
 		snip.shift()
 		for kwarg in kwargs:
-			snip += format_arg(kwarg, GOOGLE)
+			format_arg(snip, kwarg, GOOGLE)
 		snip.unshift()
 		snip.rv += '\n' + snip.mkline('', indent='')
 
@@ -192,10 +194,11 @@ def write_numpy_docstring_args(args, snip):
 
 	if args:
 		for arg in args:
-			snip += format_arg(arg, NUMPY)
+			format_arg(snip, arg, NUMPY)
 	if kwargs:
 		for kwarg in kwargs:
-			snip += format_arg(kwarg, NUMPY) + ', optional'
+			format_arg(snip, kwarg, NUMPY)
+			snip.rv += ', optional'
 	snip.rv += '\n' + snip.mkline('', indent='')
 
 
@@ -234,7 +237,7 @@ def write_function_docstring(t, snip, start):
 	snip.rv = ""
 	snip >> 1
 
-	args = get_args(t[2] + ": " + t[3])
+	args = get_args(t[2] + (": " + t[3] if t[3] else ""))
 	if args:
 		write_docstring_args(args, snip) # , start + 1)
 

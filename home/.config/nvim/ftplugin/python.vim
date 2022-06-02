@@ -45,7 +45,7 @@ let b:ale_python_pyls_extra_args = [
 
 " vim-snippets
 " documentation style
-let g:ultisnips_python_style = 'google'
+let g:ultisnips_python_style = 'sphinx'
 
 " jedi-vim pydoc
 nnoremap <silent> <buffer> K :call jedi#show_documentation()<CR>
