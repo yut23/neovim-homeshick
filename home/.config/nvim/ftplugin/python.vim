@@ -21,7 +21,13 @@ let g:ale_python_isort_use_global = 1
 
 let g:ale_python_isort_options = '--profile black'
 
+" pylint
+" always use multiple cores (overrides project-specific settings)
+" this seems to reduce run times, even for checking a single file
+let g:ale_python_pylint_options = '--jobs 2'
+
 " mypy
+let g:ale_python_mypy_options = '--strict --allow-untyped-defs --implicit-reexport --ignore-missing-imports'
 " We have other linters to take care of syntax errors
 let b:ale_python_mypy_ignore_invalid_syntax = 1
 
