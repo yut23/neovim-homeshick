@@ -166,7 +166,9 @@ digraph -^ 8593  " UPWARDS ARROW
 " vim-asterisk mappings
 " The z prefix makes the cursor stay at the current word instead of jumping
 " to the next match.
-map *  <Plug>(asterisk-z*)
-map #  <Plug>(asterisk-z#)
-map g* <Plug>(asterisk-gz*)
-map g# <Plug>(asterisk-gz#)
+if has_key(g:plugs, 'vim-asterisk')
+  map *  <Plug>(asterisk-z*)
+  map #  <Plug>(asterisk-z#)
+  map g* <Plug>(asterisk-gz*)
+  map g# <Plug>(asterisk-gz#)
+endif
