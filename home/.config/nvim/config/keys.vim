@@ -76,6 +76,9 @@ if exists(':tnoremap')
 endif
 
 " Use C-/ to comment current line in insert mode, or a block of lines in visual mode
+nmap <C-/> <Plug>NERDCommenterToggle<CR>
+xmap <C-/> <Plug>NERDCommenterToggle<CR>gv
+" Terminal sends <C-_> instead of <C-/>
 nmap <C-_> <Plug>NERDCommenterToggle<CR>
 xmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 " Use default mappings as well
