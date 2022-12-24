@@ -34,7 +34,7 @@ Plug 'vim-airline/vim-airline-themes'
 " utilities
 Plug 'chrisbra/unicode.vim'
 Plug 'haya14busa/vim-asterisk'
-Plug 'junegunn/vim-peekaboo'
+"Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim', Cond(executable('ag'))
