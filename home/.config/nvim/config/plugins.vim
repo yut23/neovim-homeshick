@@ -154,6 +154,13 @@ if ! g:minimal_rc
   call ale#fix#registry#Add('luaformatter', 'ale#fixers#luaformatter#Fix', ['lua'], 'Fix Lua files with LuaFormatter.')
   let g:ale_lua_luaformatter_executable = expand('~/.luarocks/bin/lua-format')
 
+  " disable pylint for type stub files
+  let g:ale_pattern_options = {
+        \ '\.pyi$': {
+        \   'ale_linters_ignore': ['pylint'],
+        \ },
+        \}
+
   " jedi-vim (disable everything)
   " This has to go in the vimrc instead of an ftplugin, due to how jedi-vim is
   " set up.

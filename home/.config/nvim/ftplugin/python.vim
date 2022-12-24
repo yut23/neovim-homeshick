@@ -10,6 +10,8 @@
 " ALE linters
 let b:ale_linters = ['pylint', 'mypy']
 let b:ale_fixers = ['black', 'isort']
+" Initialize this variable so we can add to it in autocmds or .lvimrc
+let b:ale_linters_ignore = []
 
 let b:ale_fix_on_save = 1
 

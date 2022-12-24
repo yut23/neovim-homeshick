@@ -44,8 +44,8 @@ set splitright
 " More effective block editing
 set virtualedit=block
 
-" Mark columns 80 and 90, and past 120
-let &colorcolumn='80,90,120'
+" Mark columns 80 and 88, and past 120
+let &colorcolumn='80,88,120'
 
 " Decrease delay on escape
 set ttimeoutlen=50
