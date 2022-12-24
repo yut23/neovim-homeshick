@@ -47,6 +47,12 @@ let g:better_whitespace_enabled = 0
 let g:better_whitespace_filetypes_blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'man', 'pydoc', 'fugitive']
 
 
+" EditorConfig
+" ------------
+" fugitive compatibility
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+
 " vim-ref
 " -------
 " open help viewer in vertical split

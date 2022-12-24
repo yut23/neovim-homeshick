@@ -61,6 +61,8 @@ Plug 'LucHermitte/lh-vim-lib'
 Plug 'moll/vim-bbye' " optional dependency
 Plug 'aymericbeaumet/vim-symlink'
 
+Plug 'editorconfig/editorconfig-vim'
+
 " local vimrc
 Plug 'embear/vim-localvimrc'
 
