@@ -14,6 +14,12 @@ else
   let g:minimal_rc = 1
 endif
 
+if exists('g:vimcat') && g:vimcat
+  let g:minimal_rc = 1
+else
+  let g:vimcat = 0
+endif
+
 source $HOME/.config/nvim/config/init.vim
 source $HOME/.config/nvim/config/general.vim
 source $HOME/.config/nvim/config/keys.vim

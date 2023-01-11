@@ -25,6 +25,16 @@ Plug 'junegunn/vim-plug'
 " colorschemes
 Plug 'justinmk/molokai'
 
+" syntax
+let g:polyglot_disabled = ['zinit']
+Plug 'sheerun/vim-polyglot'
+Plug 'sukima/xmledit'
+
+if g:vimcat
+  call plug#end()
+  finish
+endif
+
 " ui
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
@@ -48,11 +58,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
-
-" syntax
-let g:polyglot_disabled = ['zinit']
-Plug 'sheerun/vim-polyglot'
-Plug 'sukima/xmledit'
 
 " other
 Plug 'christoomey/vim-tmux-navigator'
