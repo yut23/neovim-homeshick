@@ -81,6 +81,7 @@ if ! g:minimal_rc
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
   Plug 'dense-analysis/ale'
+  Plug 'wellle/context.vim'
 
   " ncm2 sources
   Plug 'ncm2/ncm2-bufword'

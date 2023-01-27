@@ -161,6 +161,13 @@ if ! g:minimal_rc
         \ },
         \}
 
+
+  " context.vim
+  " disable by default, since it's pretty slow
+  let g:context_enabled = 0
+  let g:context_filetype_blacklist = ['help', 'man', 'ref-man', 'pydoc', 'fugitive']
+
+
   " jedi-vim (disable everything)
   " This has to go in the vimrc instead of an ftplugin, due to how jedi-vim is
   " set up.
