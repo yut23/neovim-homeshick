@@ -149,6 +149,7 @@ if ! g:minimal_rc
   let g:ale_lint_delay = 1000
 
   let g:ale_cpp_cppcheck_options = '--enable=style --inline-suppr'
+  let g:ale_c_ccls_init_options = {'cache': {'directory': '/tmp/ccls'}}
 
   " Add support for https://github.com/Koihik/LuaFormatter
   call ale#fix#registry#Add('luaformatter', 'ale#fixers#luaformatter#Fix', ['lua'], 'Fix Lua files with LuaFormatter.')
