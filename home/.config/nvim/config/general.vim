@@ -16,7 +16,7 @@ if $TERM ==# 'linux' && $NVIM_GUI != 1
   if &diff
     colorscheme industry
   else
-    colorscheme delek
+    colorscheme desert
   endif
 else
   " pretty colors everywhere else
