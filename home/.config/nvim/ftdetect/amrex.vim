@@ -5,3 +5,4 @@
 
 autocmd BufRead,BufNewFile *.H setfiletype cpp
 autocmd BufRead,BufNewFile *.F90 setfiletype fortran
+autocmd BufRead,BufNewFile Make.* setfiletype make
