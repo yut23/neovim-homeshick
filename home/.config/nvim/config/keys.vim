@@ -66,6 +66,9 @@ if ! g:minimal_rc
   nmap <Leader>al <Plug>(ale_lint)
   nmap <Leader>ah <Plug>(ale_hover)
   nmap <Leader>ar <Plug>(ale_find_references)
+
+  " show current context temporarily
+  nnoremap <silent> <Leader>co :ContextPeek<CR>
 endif
 
 "" Other Shortcuts

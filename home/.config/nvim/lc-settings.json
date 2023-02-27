@@ -2,6 +2,9 @@
   "ccls": {
     "cache": {
       "directory": "/tmp/ccls"
+    },
+    "index": {
+      "threads": 4
     }
   },
   "pyls": {

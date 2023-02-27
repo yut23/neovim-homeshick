@@ -187,7 +187,7 @@ if ! g:minimal_rc
       if exists('b:pandoc_yaml_data') && has_key(b:pandoc_yaml_data, 'title')
         let title_regex = '(' . b:pandoc_yaml_data['title'] . '|' . title_regex . ')'
       endif
-      return 'bash -c ''oldwindow=$(xdotool getactivewindow); xdotool search --onlyvisible --name "' . title_regex . ' - Chromium" windowfocus key F5 || chromium ' . file . ' >/dev/null; xdotool windowfocus "$oldwindow"'''
+      return 'bash -c ''oldwindow=$(xdotool getactivewindow); xdotool search --onlyvisible --name "' . title_regex . ' - Google Chrome" windowfocus key F5 || google-chrome-stable ' . file . ' >/dev/null; xdotool windowfocus "$oldwindow"'''
     elseif file_extension is? 'odt' && executable('okular')
       return 'okular ' . file
     elseif file_extension is? 'epub' && executable('okular')
