@@ -74,10 +74,6 @@ Plug 'embear/vim-localvimrc'
 
 if ! g:minimal_rc
   " coding
-  Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))

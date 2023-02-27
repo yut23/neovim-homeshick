@@ -83,6 +83,10 @@ if executable('ag')
 endif
 
 
+" LSP client settings
+" vim requires join(), neovim does not
+let g:lsp_settings = json_decode(join(readfile(expand('~/.config/nvim/lc-settings.json'))))
+
 if ! g:minimal_rc
   " NCM2
   " ----
@@ -102,22 +106,6 @@ if ! g:minimal_rc
   " disable by default
   let g:UltiSnipsEnableSnipMate = 0
   let g:UltiSnipsEditSplit = 'context'
-
-
-  " LanguageClient-neovim
-  " ---------------------
-  "let g:LanguageClient_serverCommands = {
-        "\ 'c': ['/home/eric/.cache/aurutils/sync/ccls/src/ccls-0.20181225.8/build/ccls', '--log-file=/tmp/ccls-lc.log', '-v=1'],
-  let g:LanguageClient_serverCommands = {
-        \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-        \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
-        \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
-        \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
-        \ }
-
-  let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-  let g:LanguageClient_settingsPath = expand('~/.config/nvim/lc-settings.json')
-  let g:LanguageClient_diagnosticsEnable = 0
 
 
   " ALE
@@ -147,9 +135,6 @@ if ! g:minimal_rc
 
   let g:ale_lint_on_text_changed = 'always'
   let g:ale_lint_delay = 1000
-
-  let g:ale_cpp_cppcheck_options = '--enable=style --inline-suppr'
-  let g:ale_c_ccls_init_options = {'cache': {'directory': '/tmp/ccls'}}
 
   " Add support for https://github.com/Koihik/LuaFormatter
   call ale#fix#registry#Add('luaformatter', 'ale#fixers#luaformatter#Fix', ['lua'], 'Fix Lua files with LuaFormatter.')

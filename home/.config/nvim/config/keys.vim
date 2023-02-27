@@ -86,20 +86,21 @@ nmap <Leader>c<Space> <Plug>NERDCommenterToggle<CR>
 xmap <Leader>c<Space> <Plug>NERDCommenterToggle<CR>gv
 
 if ! g:minimal_rc
-  function LC_maps()
-    if has_key(g:LanguageClient_serverCommands, &filetype)
-      nnoremap <buffer> <silent> <C-Q> :call LanguageClient#textDocument_hover()<CR>
-      nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  function ALE_LC_maps()
+    let l:ale_language_clients = {'c': 'ccls', 'cpp': 'ccls', 'cuda': 'ccls', 'objc': 'ccls'}
+    if has_key(l:ale_language_clients, &filetype)
+      nnoremap <buffer> <silent> <C-Q> <Plug>(ale_hover)
+      nnoremap <buffer> <silent> gd <Plug>(ale_go_to_definition)
       " Apparently <S-F6> is <F18> in Terminator.
-      nnoremap <buffer> <silent> <F18> :call LanguageClient#textDocument_rename()<CR>
-      nnoremap <buffer> <silent> <S-F6> :call LanguageClient#textDocument_rename()<CR>
-      nnoremap <buffer> <silent> <Leader>r :call LanguageClient#textDocument_rename()<CR>
-      nnoremap <buffer> <silent> <F7> :call LanguageClient#textDocument_references()<CR>
+      nnoremap <buffer> <silent> <F18> <Plug>(ale_rename)
+      nnoremap <buffer> <silent> <S-F6> <Plug>(ale_rename)
+      nnoremap <buffer> <silent> <Leader>r <Plug>(ale_rename)
+      nnoremap <buffer> <silent> <F7> <Plug>(ale_find_references)
     endif
   endfunction
-  augroup LCneovim
+  augroup ALE_LC
     autocmd!
-    autocmd FileType * call LC_maps()
+    autocmd FileType * call ALE_LC_maps()
   augroup END
 endif
 

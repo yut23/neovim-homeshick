@@ -39,17 +39,7 @@ let b:ale_python_pyls_extra_args = [
 \   '--log-file', expand('/tmp/pyls.log')
 \]
 
-"let b:ale_python_pyls_config = {
-"      \ 'pyls': {
-"      \   'plugins': {
-"      \     'pycodestyle': {
-"      \       'enabled': v:false
-"      \     },
-"      \     'pyflakes': {
-"      \       'enabled': v:false
-"      \     }
-"      \   }
-"      \ }}
+let b:ale_python_pyls_config = g:lsp_settings['pyls']
 
 " vim-snippets
 " documentation style
