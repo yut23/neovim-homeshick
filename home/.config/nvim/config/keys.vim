@@ -99,6 +99,13 @@ if ! g:minimal_rc
       nnoremap <buffer> <silent> <S-F6> <Plug>(ale_rename)
       nnoremap <buffer> <silent> <Leader>r <Plug>(ale_rename)
       nnoremap <buffer> <silent> <F7> <Plug>(ale_find_references)
+    elseif &filetype ==# 'python'
+      " Special case for jedi-vim
+      nnoremap <buffer> <silent> gd :call jedi#goto()<CR>
+      nnoremap <buffer> <silent> <F18> :call jedi#rename()<CR>
+      nnoremap <buffer> <silent> <S-F6> :call jedi#rename()<CR>
+      nnoremap <buffer> <silent> <Leader>r :call jedi#()<CR>
+      nnoremap <buffer> <silent> <F7> :call jedi#usages()<CR>
     endif
   endfunction
   augroup ALE_LC
