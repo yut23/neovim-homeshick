@@ -22,6 +22,9 @@ let b:ale_fix_on_save = 1
 
 let b:ale_c_clangtidy_checks = ['-security.insecureAPI.DeprecatedOrUnsafeBufferHandling', '-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling']
 let b:ale_cpp_clangtidy_checks = b:ale_c_clangtidy_checks
+" forcibly turn off color in case it's enabled in .clang-tidy
+let b:ale_c_clangtidy_extra_options = '-use-color=false'
+let b:ale_cpp_clangtidy_extra_options = b:ale_c_clangtidy_extra_options
 
 let b:ale_c_cppcheck_options = '--enable=style --inline-suppr'
 let b:ale_cpp_cppcheck_options = b:ale_c_cppcheck_options
