@@ -1,9 +1,5 @@
 if exists(':GuiFont')
-  if hostname() ==? 'xrb'
-    GuiFont Source Code Pro:h10:l
-  else
-    GuiFont Source Code Pro:h9:l
-  endif
+  GuiFont Source Code Pro:h10:l
 endif
 if exists(':GuiTabline')
   GuiTabline 0
