@@ -26,7 +26,7 @@ Plug 'junegunn/vim-plug'
 Plug 'justinmk/molokai'
 
 " syntax
-let g:polyglot_disabled = ['zinit', 'python', 'python-indent']
+let g:polyglot_disabled = ['zinit', 'python', 'python-indent', 'autoindent']
 Plug 'sheerun/vim-polyglot'
 Plug 'sukima/xmledit'
 Plug 'yut23/vim-python-pep8-indent', {'branch': 'personal'}
