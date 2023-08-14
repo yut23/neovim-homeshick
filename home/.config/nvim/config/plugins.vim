@@ -90,11 +90,13 @@ let g:lsp_settings = json_decode(join(readfile(expand('~/.config/nvim/lc-setting
 if ! g:minimal_rc
   " NCM2
   " ----
+  if has_key(g:plugs, 'ncm2')
   inoremap <C-Space> <c-r>=ncm2#force_trigger()<cr>
   augroup ncm2AutoEnable
     autocmd!
     autocmd BufEnter * call ncm2#enable_for_buffer()
   augroup END
+  endif
 
   " ultisnips
   " ---------
@@ -110,6 +112,7 @@ if ! g:minimal_rc
 
   " ALE
   " ---
+  if has_key(g:plugs, 'ale')
   " Open loclist automatically
   " 'on_save' avoids interrupting Ultisnips: https://github.com/dense-analysis/ale/issues/2961
   let g:ale_open_list = 'on_save'
@@ -146,10 +149,11 @@ if ! g:minimal_rc
         \   'ale_linters_ignore': ['pylint'],
         \ },
         \}
+  endif
 
 
   " context.vim
-  " disable by default, since it's pretty slow
+  " disable by default, since it's slow and makes scrolling inconsistent
   let g:context_enabled = 0
   let g:context_filetype_blacklist = ['help', 'man', 'ref-man', 'pydoc', 'fugitive']
 
