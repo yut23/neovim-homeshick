@@ -20,6 +20,12 @@ else
   let g:vimcat = 0
 endif
 
+" if we're not in a terminal, clear $TMUX to disable vim-tmux-navigator
+if !empty($TMUX) && $NVIM_GUI == 1
+  let $TMUX = ''
+  unlet $TMUX
+endif
+
 source $HOME/.config/nvim/config/init.vim
 source $HOME/.config/nvim/config/general.vim
 source $HOME/.config/nvim/config/keys.vim
