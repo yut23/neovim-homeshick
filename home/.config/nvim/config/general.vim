@@ -210,3 +210,9 @@ else
   command Cfg e ~/.config/nvim | normal 3jO
 endif
 " }}}
+
+"" Neovim-specific {{{
+if has('nvim-0.9')
+  let g:editorconfig = v:false
+endif
+" }}}
