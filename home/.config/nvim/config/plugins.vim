@@ -91,11 +91,11 @@ if ! g:minimal_rc
   " NCM2
   " ----
   if has_key(g:plugs, 'ncm2')
-  inoremap <C-Space> <c-r>=ncm2#force_trigger()<cr>
-  augroup ncm2AutoEnable
-    autocmd!
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-  augroup END
+    inoremap <C-Space> <c-r>=ncm2#force_trigger()<cr>
+    augroup ncm2AutoEnable
+      autocmd!
+      autocmd BufEnter * call ncm2#enable_for_buffer()
+    augroup END
   endif
 
   " ultisnips
@@ -113,42 +113,42 @@ if ! g:minimal_rc
   " ALE
   " ---
   if has_key(g:plugs, 'ale')
-  " Open loclist automatically
-  " 'on_save' avoids interrupting Ultisnips: https://github.com/dense-analysis/ale/issues/2961
-  let g:ale_open_list = 'on_save'
-  " Keep it open, so that stuff doesn't move around as much
-  let g:ale_keep_list_window_open = 1
-  " Also keep the signs gutter open
-  let g:ale_sign_column_always = 1
+    " Open loclist automatically
+    " 'on_save' avoids interrupting Ultisnips: https://github.com/dense-analysis/ale/issues/2961
+    let g:ale_open_list = 'on_save'
+    " Keep it open, so that stuff doesn't move around as much
+    let g:ale_keep_list_window_open = 1
+    " Also keep the signs gutter open
+    let g:ale_sign_column_always = 1
 
-  " Automatically close the loclist window when the buffer is closed
-  augroup CloseLoclistWindowGroup
-    autocmd!
-    autocmd QuitPre * if empty(&buftype) | lclose | endif
-  augroup END
+    " Automatically close the loclist window when the buffer is closed
+    augroup CloseLoclistWindowGroup
+      autocmd!
+      autocmd QuitPre * if empty(&buftype) | lclose | endif
+    augroup END
 
-  " Show 5 lines of errors (default: 10)
-  let g:ale_list_window_size = 5
+    " Show 5 lines of errors (default: 10)
+    let g:ale_list_window_size = 5
 
-  " Set message format
-  let g:ale_echo_msg_error_str = 'E'
-  let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '%severity%: [%linter%] %s% [code]%'
-  let g:ale_loclist_msg_format = '[%linter%] %s% [code]%'
+    " Set message format
+    let g:ale_echo_msg_error_str = 'E'
+    let g:ale_echo_msg_warning_str = 'W'
+    let g:ale_echo_msg_format = '%severity%: [%linter%] %s% [code]%'
+    let g:ale_loclist_msg_format = '[%linter%] %s% [code]%'
 
-  let g:ale_lint_on_text_changed = 'always'
-  let g:ale_lint_delay = 1000
+    let g:ale_lint_on_text_changed = 'always'
+    let g:ale_lint_delay = 1000
 
-  " Add support for https://github.com/Koihik/LuaFormatter
-  call ale#fix#registry#Add('luaformatter', 'ale#fixers#luaformatter#Fix', ['lua'], 'Fix Lua files with LuaFormatter.')
-  let g:ale_lua_luaformatter_executable = expand('~/.luarocks/bin/lua-format')
+    " Add support for https://github.com/Koihik/LuaFormatter
+    call ale#fix#registry#Add('luaformatter', 'ale#fixers#luaformatter#Fix', ['lua'], 'Fix Lua files with LuaFormatter.')
+    let g:ale_lua_luaformatter_executable = expand('~/.luarocks/bin/lua-format')
 
-  " disable pylint for type stub files
-  let g:ale_pattern_options = {
-        \ '\.pyi$': {
-        \   'ale_linters_ignore': ['pylint'],
-        \ },
-        \}
+    " disable pylint for type stub files
+    let g:ale_pattern_options = {
+          \ '\.pyi$': {
+          \   'ale_linters_ignore': ['pylint'],
+          \ },
+          \}
   endif
 
 
