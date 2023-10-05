@@ -92,8 +92,8 @@ endif
 
 "" Spaces and Tabs {{{
 set tabstop=2           " number of visual spaces per tab
-set softtabstop=2       " number of spaces in tab when editing
 set shiftwidth=2        " number of spaces in tab when reindenting
+set softtabstop=-1      " number of spaces in tab when editing (use shiftwidth)
 set expandtab           " tabs are spaces
 set nojoinspaces        " only insert one space after [.?!] when joining lines
 " }}}

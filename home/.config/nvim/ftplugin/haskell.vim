@@ -8,7 +8,7 @@ endif
 let b:did_ftplugin = 1
 
 " set indentation
-setlocal tabstop=8 expandtab softtabstop=4 shiftwidth=4 shiftround
+setlocal tabstop=8 expandtab shiftwidth=4 shiftround
 
 if ! g:minimal_rc
   " ALE
