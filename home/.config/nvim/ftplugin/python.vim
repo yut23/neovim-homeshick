@@ -9,7 +9,7 @@
 setlocal fo-=t fo+=croql/
 
 " ALE linters
-let b:ale_linters = ['pylint', 'mypy']
+let b:ale_linters = ['pylint', 'mypy', 'bellybutton', 'ruff']
 let b:ale_fixers = ['black', 'isort']
 " Initialize this variable so we can add to it in autocmds or .lvimrc
 let b:ale_linters_ignore = []
@@ -33,6 +33,16 @@ let g:ale_python_pylint_options = '--jobs 2'
 let g:ale_python_mypy_options = '--strict --allow-untyped-defs --implicit-reexport --ignore-missing-imports'
 " We have other linters to take care of syntax errors
 let b:ale_python_mypy_ignore_invalid_syntax = 1
+
+" ruff
+" don't try changing to the project directory in fugitive blob buffers
+if expand('%s') =~# '^fugitive:/'
+  let b:ale_python_ruff_change_directory = 0
+endif
+" ignore implicit namespace package complaints for fugitive blob buffers
+" This is supposed to be {'fugitive:/**': ['INP001']}, but there's no way to
+" escape the first colon.
+let b:ale_python_ruff_options = '--extend-per-file-ignores ''fugitive?/**:INP001'''
 
 " pyls
 let b:ale_python_pyls_extra_args = [
