@@ -24,6 +24,9 @@ if !exists('g:vimcat')
   let g:vimcat = 0
 endif
 
+" use python 3 by default
+set pyxversion=3
+
 " if we're not in a terminal, clear $TMUX to disable vim-tmux-navigator
 if !empty($TMUX) && $NVIM_GUI == 1
   let $TMUX = ''
