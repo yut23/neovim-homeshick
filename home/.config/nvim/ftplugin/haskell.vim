@@ -22,14 +22,14 @@ if has_key(g:plugs, 'intero-neovim')
   " Maps for intero. Restrict to Haskell buffers so the bindings don't collide.
 
   " Background process and window management
-  nnoremap <silent> <leader>is :InteroStart<CR>
-  nnoremap <silent> <leader>ik :InteroKill<CR>
+  nnoremap <buffer> <silent> <leader>is :InteroStart<CR>
+  nnoremap <buffer> <silent> <leader>ik :InteroKill<CR>
 
   " Open intero/GHCi split horizontally
-  nnoremap <silent> <leader>io :InteroOpen<CR>
+  nnoremap <buffer> <silent> <leader>io :InteroOpen<CR>
   " Open intero/GHCi split vertically
-  nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
-  nnoremap <silent> <leader>ih :InteroHide<CR>
+  nnoremap <buffer> <silent> <leader>iov :InteroOpen<CR><C-W>H
+  nnoremap <buffer> <silent> <leader>ih :InteroHide<CR>
 
   " Automatically reload on write
   augroup interoReload
@@ -40,21 +40,21 @@ if has_key(g:plugs, 'intero-neovim')
   "au FileType haskell call neomake#configure#automake_for_buffer('')
 
   " Load individual modules
-  nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>
-  nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
+  nnoremap <buffer> <silent> <leader>il :InteroLoadCurrentModule<CR>
+  nnoremap <buffer> <silent> <leader>if :InteroLoadCurrentFile<CR>
 
   " Type-related information
   " Heads up! These next two differ from the rest.
-  map <silent> <leader>t <Plug>InteroGenericType
-  map <silent> <leader>T <Plug>InteroType
-  nnoremap <silent> <leader>it :InteroTypeInsert<CR>
+  map <buffer> <silent> <leader>t <Plug>InteroGenericType
+  map <buffer> <silent> <leader>T <Plug>InteroType
+  nnoremap <buffer> <silent> <leader>it :InteroTypeInsert<CR>
 
   " Navigation
-  nnoremap <silent> gd :InteroGoToDef<CR>
+  nnoremap <buffer> <silent> gd :InteroGoToDef<CR>
 
   " Managing targets
   " Prompts you to enter targets (no silent):
-  nnoremap <leader>ist :InteroSetTargets<SPACE>
+  nnoremap <buffer> <leader>ist :InteroSetTargets<SPACE>
 
   " Intero starts automatically. Set this to 0 if you'd like to prevent that.
   let g:intero_start_immediately = 1
