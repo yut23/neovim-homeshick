@@ -76,32 +76,36 @@ Plug 'editorconfig/editorconfig-vim'
 " local vimrc
 Plug 'embear/vim-localvimrc'
 
-if ! g:minimal_rc
+if g:rc_level >= 1
+  " coding
+  Plug 'dense-analysis/ale'
+  Plug 'wellle/context.vim'
+
+  " python
+  " jedi-vim for documentation support
+  Plug 'davidhalter/jedi-vim'
+
+  " Pandoc
+  Plug 'vim-pandoc/vim-pandoc'
+  Plug 'vim-pandoc/vim-pandoc-syntax'
+endif
+
+if g:rc_level >= 2
   " coding
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
-  Plug 'dense-analysis/ale'
-  Plug 'wellle/context.vim'
 
   " ncm2 sources
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
   Plug 'fgrsnau/ncm2-otherbuf'
+  Plug 'ncm2/ncm2-jedi'
 
   " snippets
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
   Plug 'ncm2/ncm2-ultisnips'
-
-  " python
-  " jedi-vim for documentation support
-  Plug 'davidhalter/jedi-vim'
-  Plug 'ncm2/ncm2-jedi'
-
-  " Pandoc
-  Plug 'vim-pandoc/vim-pandoc'
-  Plug 'vim-pandoc/vim-pandoc-syntax'
 endif
 
 if hostname() ==? 'mandelbrot'
