@@ -168,7 +168,7 @@ if ! g:minimal_rc
   " vim-pandoc settings
   let g:pandoc#syntax#conceal#blacklist = ['definition', 'atx', 'list', 'quotes']
 
-  let g:pandoc#modules#disabled = ['formatting', 'spell']
+  let g:pandoc#modules#disabled = ['spell']
   let g:pandoc#command#custom_open = 'MyPandocOpen'
 
   "let g:pandoc#command#autoexec_on_writes = 1
