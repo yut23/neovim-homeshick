@@ -119,17 +119,23 @@ if !has('nvim')
   if $TERM !=# 'linux'
     " append to these options, in case there's already some other control sequences
     " at startup/exit
-    let s:block_cursor = "\e[1 q"
-    let s:bar_cursor = "\e[5 q"
+    " disable blinking for consistency with nvim
+    let s:block_cursor = "\e[2 q"
+    let s:underline_cursor = "\e[4 q"
+    let s:bar_cursor = "\e[6 q"
+    let s:default_cursor = "\e[0 q"
     if exists('&t_TI')
       let &t_TI .= s:block_cursor
-      let &t_TE .= s:bar_cursor
+      let &t_TE .= s:default_cursor
     else
       let &t_ti .= s:block_cursor
-      let &t_te .= s:bar_cursor
+      let &t_te .= s:default_cursor
     endif
-    " start/end insert mode
+    " start insert mode
     let &t_SI .= s:bar_cursor
+    " start replace mode
+    let &t_SR .= s:underline_cursor
+    " leave insert or replace mode
     let &t_EI .= s:block_cursor
   endif
 endif
