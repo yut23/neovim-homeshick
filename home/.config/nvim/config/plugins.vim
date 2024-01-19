@@ -101,7 +101,11 @@ if ! g:minimal_rc
   " ultisnips
   " ---------
   " See keys.vim for CR handling
-  let g:UltiSnipsExpandTrigger = '<F13>'
+  if has('nvim')
+    let g:UltiSnipsExpandTrigger = '<F13>'
+  else
+    let g:UltiSnipsExpandTrigger = '<S-F1>'
+  endif
   let g:UltiSnipsJumpForwardTrigger = '<C-L>'
   let g:UltiSnipsJumpBackwardTrigger = '<C-H>'
   "let g:UltiSnipsRemoveSelectModeMappings = 0
