@@ -7,16 +7,18 @@ endif
 " set indentation
 setlocal tabstop=8 expandtab shiftwidth=4 shiftround
 
-if ! g:minimal_rc
-  " ALE
+" ALE
+if has_key(g:plugs, 'ale')
   let b:ale_fixers = ['hlint']
   let b:ale_linters = ['hie', 'hfmt', 'hlint']
 
   "let g:ale_haskell_hfmt_executable = 'stack exec -- hfmt'
   "let g:ale_haskell_hlint_executable = 'stack'
   "let g:ale_haskell_hlint_options = 'exec -- hlint'
+endif
 
-  " intero-neovim
+" intero-neovim
+if has_key(g:plugs, 'intero-neovim')
   " Maps for intero. Restrict to Haskell buffers so the bindings don't collide.
 
   " Background process and window management

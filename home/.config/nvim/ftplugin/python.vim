@@ -57,7 +57,9 @@ let b:ale_python_pyls_config = g:lsp_settings['pyls']
 let g:ultisnips_python_style = 'sphinx'
 
 " jedi-vim pydoc
-nnoremap <silent> <buffer> K :call jedi#show_documentation()<CR>
+if has_key(g:plugs, 'jedi-vim')
+  nnoremap <silent> <buffer> K :call jedi#show_documentation()<CR>
+endif
 
 " disable keys
 let g:jedi#goto_command = ''
