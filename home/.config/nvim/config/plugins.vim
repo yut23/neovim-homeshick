@@ -3,78 +3,95 @@
 
 " vim-airline
 " -----------
-set laststatus=2        " always show the status line
-set noshowmode          " airline handles this
+if has_key(g:plugs, 'vim-airline')
+  set laststatus=2        " always show the status line
+  set noshowmode          " airline handles this
 
-if $TERM ==# 'linux' && $NVIM_GUI != 1
-  " use a more visible theme in the linux console
-  let g:airline_theme           = 'monochrome'
-  let g:airline_powerline_fonts = 0
-else
-  let g:airline_theme           = 'molokai'
-  let g:airline_powerline_fonts = 1
+  if $TERM ==# 'linux' && $NVIM_GUI != 1
+    " use a more visible theme in the linux console
+    let g:airline_theme           = 'monochrome'
+    let g:airline_powerline_fonts = 0
+  else
+    let g:airline_theme           = 'molokai'
+    let g:airline_powerline_fonts = 1
+  endif
+  let g:airline#extensions#branch#enabled = 1
+  let g:airline#extensions#ale#enabled = 1
+
+  " Enable the list of buffers
+  let g:airline#extensions#tabline#enabled = 1
+  " Show just the filename
+  let g:airline#extensions#tabline#fnamemod = ':t'
+  " use full numbers instead of ugly superscripts
+  let g:airline#extensions#tabline#buffer_idx_mode = 0
+  let g:airline#extensions#tabline#buffer_nr_show = 1
+
+  " Don't show hunk indicators if they are all zero
+  let g:airline#extensions#hunks#non_zero_only = 1
+
+  " Word count
+  let g:airline#extensions#wordcount#filetypes = ['help', 'markdown', 'rst', 'org', 'text', 'asciidoc', 'tex', 'mail']
+  let g:airline#extensions#wordcount#filetypes += ['pandoc']
+
+  " Revert https://github.com/vim-airline/vim-airline/commit/62e7fc6
+  let g:airline_theme_patch_func = 'AirlineThemePatch'
+  function! AirlineThemePatch(palette)
+    let a:palette.tabline = get(a:palette, 'tabline', {})
+    let a:palette.tabline.airline_tab = a:palette.normal.airline_b
+  endfunction
 endif
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#ale#enabled = 1
-
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-" use full numbers instead of ugly superscripts
-let g:airline#extensions#tabline#buffer_idx_mode = 0
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" Don't show hunk indicators if they are all zero
-let g:airline#extensions#hunks#non_zero_only = 1
-
-" Word count
-let g:airline#extensions#wordcount#filetypes = ['help', 'markdown', 'rst', 'org', 'text', 'asciidoc', 'tex', 'mail']
-let g:airline#extensions#wordcount#filetypes += ['pandoc']
-
-" Revert https://github.com/vim-airline/vim-airline/commit/62e7fc6
-let g:airline_theme_patch_func = 'AirlineThemePatch'
-function! AirlineThemePatch(palette)
-  let a:palette.tabline = get(a:palette, 'tabline', {})
-  let a:palette.tabline.airline_tab = a:palette.normal.airline_b
-endfunction
 
 
 " better-whitespace
 " -----------------
-" disable the red highlight, since we have 'list' enabled
-let g:better_whitespace_enabled = 0
-let g:better_whitespace_filetypes_blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'man', 'pydoc', 'fugitive']
+if has_key(g:plugs, 'vim-better-whitespace')
+  " disable the red highlight, since we have 'list' enabled
+  let g:better_whitespace_enabled = 0
+  let g:better_whitespace_filetypes_blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'man', 'pydoc', 'fugitive']
+endif
 
 
 " EditorConfig
 " ------------
-" fugitive compatibility
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+if has_key(g:plugs, 'editorconfig-vim')
+  " fugitive compatibility
+  let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+  " disable built-in neovim support, since it doesn't like vim-symlink
+  if has('nvim-0.9')
+    let g:editorconfig = v:false
+  endif
+endif
 
 
 " vim-ref
 " -------
-" open help viewer in vertical split
-let g:ref_open = 'vsplit'
+if has_key(g:plugs, 'vim-ref')
+  " open help viewer in vertical split
+  let g:ref_open = 'vsplit'
+endif
 
 
 " linediff
 " --------
-" use scratch buffers for the diff sections
-let g:linediff_buffer_type = 'scratch'
+if has_key(g:plugs, 'linediff.vim')
+  " use scratch buffers for the diff sections
+  let g:linediff_buffer_type = 'scratch'
+endif
 
 
 " NERDCommenter
 " -------------
-" Make Toggle behave as AlignLeft
-let g:NERDDefaultAlign = 'left'
+if has_key(g:plugs, 'nerdcommenter')
+  " Make Toggle behave as AlignLeft
+  let g:NERDDefaultAlign = 'left'
+endif
 
 
 " ack.vim
 " -------
 " Use ag if available
-if executable('ag')
+if has_key(g:plugs, 'ack.vim') && executable('ag')
   let g:ackprg = 'ag --vimgrep'
   " alias commands Ack -> Ag
   for command in ['Ack', 'AckAdd', 'AckFromSearch', 'LAck', 'LAckAdd', 'AckFile']
