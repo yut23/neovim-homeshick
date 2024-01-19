@@ -59,6 +59,12 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:ref_open = 'vsplit'
 
 
+" linediff
+" --------
+" use scratch buffers for the diff sections
+let g:linediff_buffer_type = 'scratch'
+
+
 " NERDCommenter
 " -------------
 " Make Toggle behave as AlignLeft
