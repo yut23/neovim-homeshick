@@ -88,24 +88,6 @@ if has_key(g:plugs, 'nerdcommenter')
 endif
 
 
-" ack.vim
-" -------
-" Use ag if available
-if has_key(g:plugs, 'ack.vim') && executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-  " alias commands Ack -> Ag
-  for command in ['Ack', 'AckAdd', 'AckFromSearch', 'LAck', 'LAckAdd', 'AckFile']
-    execute 'command! -bang -nargs=* -complete=file ' . substitute(command, 'Ack', 'Ag', '') . ' ' . command . '<bang> <args>'
-  endfor
-  for command in ['AckHelp', 'LAckHelp']
-    execute 'command! -bang -nargs=* -complete=help ' . substitute(command, 'Ack', 'Ag', '') . ' ' . command . '<bang> <args>'
-  endfor
-  for command in ['AckWindow', 'LAckWindow']
-    execute 'command! -bang -nargs=* ' . substitute(command, 'Ack', 'Ag', '') . ' ' . command . '<bang> <args>'
-  endfor
-endif
-
-
 " LSP client settings
 " vim requires join(), neovim does not
 let g:lsp_settings = json_decode(join(readfile(expand('~/.config/nvim/lc-settings.json'))))

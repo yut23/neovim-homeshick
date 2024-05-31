@@ -47,10 +47,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'chrisbra/unicode.vim'
 Plug 'haya14busa/vim-asterisk'
+Plug 'jremmen/vim-ripgrep', Cond(executable('rg'))
 "Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak'
 Plug 'mbbill/undotree'
-Plug 'mileszs/ack.vim', Cond(executable('ag'))
 Plug 'ntpeters/vim-better-whitespace'
 "Plug 'rickhowe/diffchar.vim'
 Plug 'scrooloose/nerdcommenter'
