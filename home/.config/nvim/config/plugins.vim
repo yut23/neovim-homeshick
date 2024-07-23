@@ -88,6 +88,17 @@ if has_key(g:plugs, 'nerdcommenter')
 endif
 
 
+" vim-tmux-navigator
+" ------------------
+if has_key(g:plugs, 'vim-tmux-navigator')
+  " disable the default mappings, so I can consistently restore Ctrl-L in
+  " visual mode afterward (see config/keys.vim)
+  let g:tmux_navigator_no_mappings = 1
+  " Disable tmux navigator when the current tmux pane is zoomed
+  let g:tmux_navigator_disable_when_zoomed = 1
+endif
+
+
 " LSP client settings
 " vim requires join(), neovim does not
 let g:lsp_settings = json_decode(join(readfile(expand('~/.config/nvim/lc-settings.json'))))

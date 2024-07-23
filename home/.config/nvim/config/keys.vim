@@ -190,7 +190,6 @@ if has_key(g:plugs, 'vim-asterisk')
 endif
 
 if has_key(g:plugs, 'vim-tmux-navigator')
-  let g:tmux_navigator_no_mappings = 1
   noremap <silent> <c-h> :<C-U>TmuxNavigateLeft<cr>
   noremap <silent> <c-j> :<C-U>TmuxNavigateDown<cr>
   noremap <silent> <c-k> :<C-U>TmuxNavigateUp<cr>
