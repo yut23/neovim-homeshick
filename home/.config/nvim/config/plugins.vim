@@ -88,6 +88,15 @@ if has_key(g:plugs, 'nerdcommenter')
 endif
 
 
+" gitgutter
+" ---------
+if has_key(g:plugs, 'vim-gitgutter')
+  " Use floating/popup window for hunk previews where available (the plugin
+  " automatically falls back to a preview window if not)
+  let g:gitgutter_preview_win_floating = 1
+endif
+
+
 " vim-tmux-navigator
 " ------------------
 if has_key(g:plugs, 'vim-tmux-navigator')
