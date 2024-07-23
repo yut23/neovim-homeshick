@@ -177,7 +177,10 @@ endfunction
 imap <expr> <CR> HandleCR()
 
 " Digraphs
-digraph -^ 8593  " UPWARDS ARROW
+digraph -^ 8593  " '↑' UPWARDS ARROW
+digraph ~= 8771  " '≃' ASYMPTOTICALLY EQUAL TO
+digraph ~~ 8776  " '≈' ALMOST EQUAL TO
+digraph xx  215  " '×' MULTIPLICATION SIGN
 
 " vim-asterisk mappings
 " The z prefix makes the cursor stay at the current word instead of jumping
