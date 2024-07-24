@@ -105,6 +105,7 @@ set title               " display a title
 set cursorline          " highlight current line
 
 set wildmode=list:longest
+set wildignorecase      " ignore case when completing file names on the command-line
 set lazyredraw          " redraw only when necessary (faster macros)
 
 set scrolloff=2         " keep the cursor at least 2 lines from the top and bottom
