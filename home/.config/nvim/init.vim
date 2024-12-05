@@ -30,7 +30,10 @@ set pyxversion=3
 " if we're not in a terminal, clear $TMUX to disable vim-tmux-navigator
 if !empty($TMUX) && $NVIM_GUI == 1
   let $TMUX = ''
-  unlet $TMUX
+  if has('patch-8.0.1832')
+    " this needs to be guarded by execute, as it triggers an E488 otherwise
+    execute 'unlet $TMUX'
+  endif
 endif
 
 source $HOME/.config/nvim/config/init.vim
