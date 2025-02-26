@@ -5,8 +5,8 @@
 "endif
 
 " Set 'formatoptions' to break comment lines but not other lines,
-" and insert the comment leader when hitting <CR> or using 'o'.
-setlocal fo-=t fo+=croql/
+" and insert the comment leader when hitting <CR>.
+setlocal fo-=t fo+=crql/
 
 " ALE linters
 let b:ale_linters = ['pylint', 'mypy', 'bellybutton', 'ruff']
