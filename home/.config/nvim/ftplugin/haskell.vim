@@ -9,12 +9,19 @@ setlocal tabstop=8 expandtab shiftwidth=4 shiftround
 
 " ALE
 if has_key(g:plugs, 'ale')
-  let b:ale_fixers = ['hlint']
-  let b:ale_linters = ['hie', 'hfmt', 'hlint']
+  " this check is needed so we don't change values overridden by the user or a
+  " .lvimrc file if polyglot resets the filetype on BufWritePost (e.g.
+  " polyglot#detect#H() for *.h files)
+  if !exists('b:ale_ftplugin_already_run')
+    let b:ale_fixers = ['hlint']
+    let b:ale_linters = ['hie', 'hfmt', 'hlint']
 
-  "let g:ale_haskell_hfmt_executable = 'stack exec -- hfmt'
-  "let g:ale_haskell_hlint_executable = 'stack'
-  "let g:ale_haskell_hlint_options = 'exec -- hlint'
+    "let g:ale_haskell_hfmt_executable = 'stack exec -- hfmt'
+    "let g:ale_haskell_hlint_executable = 'stack'
+    "let g:ale_haskell_hlint_options = 'exec -- hlint'
+
+    let b:ale_ftplugin_already_run = 1
+  endif
 endif
 
 " intero-neovim
