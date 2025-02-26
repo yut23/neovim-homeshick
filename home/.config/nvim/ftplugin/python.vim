@@ -31,6 +31,7 @@ let g:ale_python_pylint_options = '--jobs 2'
 
 " mypy
 let g:ale_python_mypy_options = '--strict --allow-untyped-defs --implicit-reexport --ignore-missing-imports'
+"let g:ale_python_mypy_options = '--strict --allow-untyped-defs --implicit-reexport --ignore-missing-imports --no-silence-site-packages'
 " We have other linters to take care of syntax errors
 let b:ale_python_mypy_ignore_invalid_syntax = 1
 
