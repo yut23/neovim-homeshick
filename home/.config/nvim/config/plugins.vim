@@ -199,7 +199,17 @@ endif
 if has_key(g:plugs, 'context.vim')
   " disable by default, since it's slow and makes scrolling inconsistent
   let g:context_enabled = 0
+  "let g:context_add_autocmds = 0
   let g:context_filetype_blacklist = ['help', 'man', 'ref-man', 'pydoc', 'fugitive']
+  "if has_key(g:plugs, 'context.vim')
+  "  augroup context.vim
+  "    autocmd!
+  "    autocmd VimEnter * ContextActivate
+  "    if exists('##WinScrolled')
+  "      autocmd WinScrolled * call context#update('WinScrolled')
+  "    endif
+  "  augroup END
+  "endif
 endif
 
 
