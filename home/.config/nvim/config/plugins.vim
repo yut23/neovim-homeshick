@@ -205,6 +205,12 @@ if has_key(g:plugs, 'jedi-vim')
 endif
 
 
+" factor.vim
+if has_key(g:plugs, 'factor.vim')
+  let g:FactorResourcePath = '~/projects/factor'
+endif
+
+
 " vim-pandoc settings
 if has_key(g:plugs, 'vim-pandoc')
   let g:pandoc#syntax#conceal#blacklist = ['definition', 'atx', 'list', 'quotes']

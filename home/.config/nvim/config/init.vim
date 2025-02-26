@@ -42,6 +42,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'sukima/xmledit'
 Plug 'yut23/vim-python-pep8-indent', {'branch': 'personal'}
 Plug 'yut23/python-syntax', {'branch': 'pep_622'}
+Plug 'factor/factor.vim'
 
 if g:vimcat
   call plug#end()
@@ -57,6 +58,7 @@ Plug 'vim-airline/vim-airline-themes'
 " utilities
 Plug 'AndrewRadev/linediff.vim'
 Plug 'chrisbra/unicode.vim'
+Plug 'FooSoft/vim-argwrap'
 Plug 'haya14busa/vim-asterisk'
 Plug 'jremmen/vim-ripgrep', Cond(executable('rg'))
 "Plug 'junegunn/vim-peekaboo'
