@@ -174,8 +174,10 @@ if has_key(g:plugs, 'ale')
   let g:ale_lint_delay = 1000
 
   " Add support for https://github.com/Koihik/LuaFormatter
-  call ale#fix#registry#Add('luaformatter', 'ale#fixers#luaformatter#Fix', ['lua'], 'Fix Lua files with LuaFormatter.')
   let g:ale_lua_luaformatter_executable = expand('~/.luarocks/bin/lua-format')
+  if filereadable(g:ale_lua_luaformatter_executable)
+    call ale#fix#registry#Add('luaformatter', 'ale#fixers#luaformatter#Fix', ['lua'], 'Fix Lua files with LuaFormatter.')
+  endif
 
   " disable pylint for type stub files
   let g:ale_pattern_options = {
@@ -240,6 +242,7 @@ if has_key(g:plugs, 'vim-pandoc')
     endif
   endfunction
 endif
+
 
 " localvimrc
 if has_key(g:plugs, 'vim-localvimrc')
