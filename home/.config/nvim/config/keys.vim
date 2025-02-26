@@ -90,29 +90,20 @@ xmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 nmap <Leader>c<Space> <Plug>NERDCommenterToggle<CR>
 xmap <Leader>c<Space> <Plug>NERDCommenterToggle<CR>gv
 
-if has_key(g:plugs, 'ale') || has_key(g:plugs, 'jedi-vim')
-  function ALE_LC_maps()
-    let l:ale_language_clients = {'c': 'ccls', 'cpp': 'ccls', 'cuda': 'ccls', 'objc': 'ccls'}
-    if has_key(l:ale_language_clients, &filetype) && has_key(g:plugs, 'ale')
-      nnoremap <buffer> <silent> <C-Q> <Plug>(ale_hover)
-      nnoremap <buffer> <silent> gd <Plug>(ale_go_to_definition)
-      " Apparently <S-F6> is <F18> in Terminator.
-      nnoremap <buffer> <silent> <F18> <Plug>(ale_rename)
-      nnoremap <buffer> <silent> <S-F6> <Plug>(ale_rename)
-      nnoremap <buffer> <silent> <Leader>r <Plug>(ale_rename)
-      nnoremap <buffer> <silent> <F7> <Plug>(ale_find_references)
-    elseif &filetype ==# 'python' && has_key(g:plugs, 'jedi-vim')
-      " Special case for jedi-vim
-      nnoremap <buffer> <silent> gd :call jedi#goto()<CR>
-      nnoremap <buffer> <silent> <F18> :call jedi#rename()<CR>
-      nnoremap <buffer> <silent> <S-F6> :call jedi#rename()<CR>
-      nnoremap <buffer> <silent> <Leader>r :call jedi#rename()<CR>
-      nnoremap <buffer> <silent> <F7> :call jedi#usages()<CR>
-    endif
+if has_key(g:plugs, 'ale')
+  function! ALE_LC_maps()
+    nnoremap <buffer> <silent> <C-Q> <Plug>(ale_hover)
+    nnoremap <buffer> <silent> gd <Plug>(ale_go_to_definition)
+    nnoremap <buffer> <silent> <Leader>r <Plug>(ale_rename)
+    " default JetBrains mapping
+    nnoremap <buffer> <silent> <S-F6> <Plug>(ale_rename)
+    " Apparently <S-F6> is <F18> in Terminator.
+    nnoremap <buffer> <silent> <F18> <Plug>(ale_rename)
+    nnoremap <buffer> <silent> <F7> <Plug>(ale_find_references)
   endfunction
   augroup ALE_LC
     autocmd!
-    autocmd FileType * call ALE_LC_maps()
+    autocmd FileType c,cpp,cuda,objc call ALE_LC_maps()
   augroup END
 endif
 

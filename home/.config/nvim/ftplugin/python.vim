@@ -56,9 +56,16 @@ let b:ale_python_pyls_config = g:lsp_settings['pyls']
 " documentation style
 let g:ultisnips_python_style = 'sphinx'
 
-" jedi-vim pydoc
+" jedi-vim mappings
 if has_key(g:plugs, 'jedi-vim')
-  nnoremap <silent> <buffer> K :call jedi#show_documentation()<CR>
+  nnoremap <buffer> <silent> K :call jedi#show_documentation()<CR>
+  nnoremap <buffer> <silent> gd :call jedi#goto()<CR>
+  nnoremap <buffer> <silent> <Leader>r :call jedi#rename()<CR>
+  " default JetBrains mapping
+  nnoremap <buffer> <silent> <S-F6> :call jedi#rename()<CR>
+  " Apparently <S-F6> is <F18> in Terminator
+  nnoremap <buffer> <silent> <F18> :call jedi#rename()<CR>
+  nnoremap <buffer> <silent> <F7> :call jedi#usages()<CR>
 endif
 
 " disable keys
