@@ -133,6 +133,9 @@ if hostname() ==? 'mandelbrot'
   " Kerboscript (kOS)
   Plug 'KSP-KOS/EditorTools', {'branch': 'develop', 'rtp': 'VIM/vim-kerboscript'}
 
+  " Crafttweaker/Zenscript
+  Plug 'DaeZak/crafttweaker-vim-highlighting'
+
   " MIPS
   Plug 'harenome/vim-mipssyntax'
 
