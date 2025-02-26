@@ -119,7 +119,8 @@ endif
 " delete back word with Ctrl-Backspace (^H in most terminals) and forward word with Ctrl-Delete
 map!  <C-W>
 map! <C-BS> <C-W>
-inoremap <C-Del> <C-G>u<C-O>de
+" <C-G>u creates a new undo point, "_ is the black hole register
+inoremap <C-Del> <C-G>u<C-O>"_de
 
 " disable help.txt on F1
 nnoremap <F1> <nop>
@@ -181,6 +182,7 @@ digraph -^ 8593  " '↑' UPWARDS ARROW
 digraph ~= 8771  " '≃' ASYMPTOTICALLY EQUAL TO
 digraph ~~ 8776  " '≈' ALMOST EQUAL TO
 digraph xx  215  " '×' MULTIPLICATION SIGN
+digraph el 8712  " '∈' ELEMENT OF
 
 " vim-asterisk mappings
 " The z prefix makes the cursor stay at the current word instead of jumping
