@@ -26,7 +26,18 @@ Plug 'junegunn/vim-plug'
 Plug 'justinmk/molokai'
 
 " syntax
-let g:polyglot_disabled = ['zinit', 'python', 'python-indent']
+" can't do comments inside a multiline list, so this will have to do
+let g:polyglot_disabled = []
+" broken for any sort of advanced expansion; the default zsh syntax works well
+" enough
+let g:polyglot_disabled += ['zinit']
+" using my own forks below
+let g:polyglot_disabled += ['python', 'python-indent']
+" using vim-pandoc-syntax instead
+let g:polyglot_disabled += ['markdown']
+" conflicts with *.ll for llvm (it's some genealogy software)
+let g:polyglot_disabled += ['lifelines']
+
 Plug 'sheerun/vim-polyglot'
 Plug 'sukima/xmledit'
 Plug 'yut23/vim-python-pep8-indent', {'branch': 'personal'}

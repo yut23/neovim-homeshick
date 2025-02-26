@@ -217,3 +217,10 @@ else
   command Cfg e ~/.config/nvim | normal 3jO
 endif
 " }}}
+
+"" Syntax {{{
+" Enable syntax nesting for markdown files (not pandoc)
+let g:markdown_fenced_languages = ['python', 'bash']
+" Show code block delimiters
+let g:markdown_syntax_conceal = 0
+" }}}
