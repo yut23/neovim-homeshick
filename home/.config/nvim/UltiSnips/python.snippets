@@ -20,6 +20,22 @@ snippet #! "#!/usr/bin/env python3" b
 $0
 endsnippet
 
+snippet fd_prototype "Factorio PrototypeBase subclass" bm
+@dataclass(frozen=True, kw_only=True)
+class $1(${2:PrototypeBase}, type="$3"):
+	"""https://lua-api.factorio.com/latest/prototypes/$1Prototype.html"""
+
+	$0
+endsnippet
+
+snippet fl_property "factorio_lib Prototype wrapper property forwarder" bm
+@property
+def $1(self) -> $2:
+	return self.prototype.$1
+
+$0
+endsnippet
+
 ##########
 # COMMON #
 ##########
