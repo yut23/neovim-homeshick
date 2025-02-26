@@ -85,6 +85,10 @@ endif
 if has_key(g:plugs, 'nerdcommenter')
   " Make Toggle behave as AlignLeft
   let g:NERDDefaultAlign = 'left'
+  " Add delimiter mappings for todo list
+  let g:NERDCustomDelimiters = {
+        \ 'todo': { 'left': '# ', 'leftAlt': '#' },
+        \ }
 endif
 
 
