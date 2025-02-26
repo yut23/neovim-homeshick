@@ -112,6 +112,13 @@ if has_key(g:plugs, 'vim-tmux-navigator')
 endif
 
 
+" vim-abolish
+if has_key(g:plugs, 'vim-abolish')
+  " set the save destination correctly
+  let g:abolish_save_file = expand('~/.config/nvim/after/plugin/abolish.vim')
+endif
+
+
 " LSP client settings
 " vim requires join(), neovim does not
 let g:lsp_settings = json_decode(join(readfile(expand('~/.config/nvim/lc-settings.json'))))
