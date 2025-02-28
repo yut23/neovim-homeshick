@@ -103,6 +103,7 @@ set ruler               " always show the cursor position
 set number              " line numbers
 set title               " display a title
 set cursorline          " highlight current line
+set showcmd             " display visual selection size in the last line
 
 set wildmode=list:longest
 set wildignorecase      " ignore case when completing file names on the command-line
@@ -154,7 +155,8 @@ if s:vim_tmux && !has('gui_running')
 endif
 
 if has('patch-7.4.314')
-  set shortmess+=c        " don't give |ins-completion-menu| messages.
+  " don't give |ins-completion-menu| messages.
+  set shortmess+=c
 endif
 " for ncm2
 if exists('+completeopt') && has('patch-7.4.775')
