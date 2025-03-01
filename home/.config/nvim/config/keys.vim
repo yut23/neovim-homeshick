@@ -1,4 +1,5 @@
 " config/keys.vim
+scriptencoding utf-8
 
 " Fix mappings in vim
 if !has('nvim')

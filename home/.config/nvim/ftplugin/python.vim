@@ -6,7 +6,7 @@
 
 " Set 'formatoptions' to break comment lines but not other lines,
 " and insert the comment leader when hitting <CR>.
-setlocal fo-=t fo+=crql/
+setlocal formatoptions-=t formatoptions+=crql/
 
 " ALE settings
 " this check is needed so we don't change values overridden by the user or a
