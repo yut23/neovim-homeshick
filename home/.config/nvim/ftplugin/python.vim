@@ -26,7 +26,8 @@ if !exists('b:ale_ftplugin_already_run')
   let g:ale_python_isort_executable = 'isort'
   let g:ale_python_isort_use_global = 1
 
-  let g:ale_python_isort_options = '--profile black'
+  " use --atomic to prevent saving if there are syntax errors
+  let g:ale_python_isort_options = '--profile black --atomic'
 
   " pylint
   " always use multiple cores (overrides project-specific settings)
