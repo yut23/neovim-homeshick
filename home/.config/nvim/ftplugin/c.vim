@@ -7,7 +7,10 @@ endif
 
 " Set 'formatoptions' to break comment lines but not other lines,
 " and insert the comment leader when hitting <CR> or using 'o'.
-setlocal formatoptions-=t formatoptions+=croql/
+setlocal formatoptions-=t formatoptions+=croql
+if has('patch-8.2.4907')
+  setlocal formatoptions+=/
+endif
 
 " ALE settings
 " this check is needed so we don't change values overridden by the user or a
