@@ -8,7 +8,7 @@ endif
 " Set 'formatoptions' to break comment lines but not other lines,
 " and insert the comment leader when hitting <CR> or using 'o'.
 setlocal formatoptions-=t formatoptions+=croql
-if has('patch-8.2.4907')
+if has('patch-8.2.4907') || has('nvim-0.7.1')
   setlocal formatoptions+=/
 endif
 
