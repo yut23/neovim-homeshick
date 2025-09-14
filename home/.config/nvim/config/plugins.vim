@@ -123,6 +123,29 @@ endif
 " vim requires join(), neovim does not
 let g:lsp_settings = json_decode(join(readfile(expand('~/.config/nvim/lc-settings.json'))))
 
+" vim-lsp and friends
+" -------------------
+if has_key(g:plugs, 'vim-lsp')
+  " disable highlighting references to the symbol under the cursor
+  let g:lsp_document_highlight_enabled = 0
+
+  if executable('ccls')
+    au User lsp_setup call lsp#register_server({
+          \ 'name': 'ccls',
+          \ 'cmd': {server_info->['ccls']},
+          \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+          \ 'initialization_options': g:lsp_settings['ccls'],
+          \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc', 'cuda'],
+          \ })
+  endif
+
+  " don't automatically add vim-lsp as an ALE linter for all filetypes
+  if has_key(g:plugs, 'vim-lsp-ale')
+    let g:lsp_ale_auto_config_ale = v:false
+  endif
+endif
+
+
 " NCM2
 " ----
 if has_key(g:plugs, 'ncm2')

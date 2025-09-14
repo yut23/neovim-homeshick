@@ -17,7 +17,7 @@ endif
 " .lvimrc file if polyglot resets the filetype on BufWritePost (e.g.
 " polyglot#detect#H() for *.h files)
 if !exists('b:ale_ftplugin_already_run')
-  let b:ale_linters = ['ccls', 'cppcheck']
+  let b:ale_linters = ['vim-lsp', 'cppcheck']
   let b:ale_linters += ['clangtidy']
 
   let b:ale_fixers = ['clang-format']
@@ -32,8 +32,8 @@ if !exists('b:ale_ftplugin_already_run')
 
   let b:ale_c_cppcheck_options = '--enable=style --inline-suppr'
   let b:ale_cpp_cppcheck_options = b:ale_c_cppcheck_options
-  let b:ale_c_ccls_init_options = g:lsp_settings['ccls']
-  let b:ale_cpp_ccls_init_options = b:ale_c_ccls_init_options
+  "let b:ale_c_ccls_init_options = g:lsp_settings['ccls']
+  "let b:ale_cpp_ccls_init_options = b:ale_c_ccls_init_options
 
   let b:ale_ftplugin_already_run = 1
 endif

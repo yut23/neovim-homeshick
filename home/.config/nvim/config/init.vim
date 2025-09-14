@@ -110,11 +110,16 @@ if g:rc_level >= 2
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
 
+  " LSP
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'rhysd/vim-lsp-ale'
+
   " ncm2 sources
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
   Plug 'fgrsnau/ncm2-otherbuf'
   Plug 'ncm2/ncm2-jedi'
+  Plug 'ncm2/ncm2-vim-lsp'
 
   " snippets
   Plug 'SirVer/ultisnips'

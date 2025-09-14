@@ -91,20 +91,21 @@ xmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 nmap <Leader>c<Space> <Plug>NERDCommenterToggle<CR>
 xmap <Leader>c<Space> <Plug>NERDCommenterToggle<CR>gv
 
-if has_key(g:plugs, 'ale')
-  function! ALE_LC_maps()
-    nnoremap <buffer> <silent> <C-Q> <Plug>(ale_hover)
-    nnoremap <buffer> <silent> gd <Plug>(ale_go_to_definition)
-    nnoremap <buffer> <silent> <Leader>r <Plug>(ale_rename)
+" See ftplugin/python.vim for jedi-vim mappings
+if has_key(g:plugs, 'vim-lsp')
+  function! LSP_maps()
+    nnoremap <buffer> <silent> <C-Q> <Plug>(lsp-hover)
+    nnoremap <buffer> <silent> gd <Plug>(lsp-definition)
+    nnoremap <buffer> <silent> <Leader>r <Plug>(lsp-rename)
     " default JetBrains mapping
-    nnoremap <buffer> <silent> <S-F6> <Plug>(ale_rename)
+    nnoremap <buffer> <silent> <S-F6> <Plug>(lsp-rename)
     " Apparently <S-F6> is <F18> in Terminator.
-    nnoremap <buffer> <silent> <F18> <Plug>(ale_rename)
-    nnoremap <buffer> <silent> <F7> <Plug>(ale_find_references)
+    nnoremap <buffer> <silent> <F18> <Plug>(lsp-rename)
+    nnoremap <buffer> <silent> <F7> <Plug>(lsp-references)
   endfunction
-  augroup ALE_LC
+  augroup LSP_mappings
     autocmd!
-    autocmd FileType c,cpp,cuda,objc call ALE_LC_maps()
+    autocmd User lsp_buffer_enabled call LSP_maps()
   augroup END
 endif
 
