@@ -14,6 +14,9 @@ syn match  todoPendingMark /^\s*\*/ contained containedin=todoPending
 syn region todoCompleted start=/^\s*✓\s\+.*$/ end=/$/ oneline contains=todoCode,todoInlineURL
 syn match  todoCompletedMark /^\s*✓/ contained containedin=todoCompleted
 
+syn region todoCancelled start=/^\s*✗\s\+.*$/ end=/$/ oneline contains=todoCode,todoInlineURL
+syn match  todoCancelledMark /^\s*✗/ contained containedin=todoCancelled
+
 syn region todoInfo start=/^\s*-\s\+.*$/ end=/$/ oneline contains=todoCode,todoInlineURL
 syn match  todoInfoMark /^\s*-/ contained containedin=todoInfo
 
@@ -39,6 +42,7 @@ hi link todoHeaderMark Title
 hi link todoPendingMark Identifier
 hi link todoCompletedMark PreProc
 hi link todoInfoMark Operator
+hi link todoCancelledMark Keyword
 
 hi link todoCode String
 hi link todoInlineURL Underlined
