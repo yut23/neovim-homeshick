@@ -94,14 +94,14 @@ xmap <Leader>c<Space> <Plug>NERDCommenterToggle<CR>gv
 " See ftplugin/python.vim for jedi-vim mappings
 if has_key(g:plugs, 'vim-lsp')
   function! LSP_maps()
-    nnoremap <buffer> <silent> <C-Q> <Plug>(lsp-hover)
-    nnoremap <buffer> <silent> gd <Plug>(lsp-definition)
-    nnoremap <buffer> <silent> <Leader>r <Plug>(lsp-rename)
+    nmap <buffer> <silent> <C-Q> <Plug>(lsp-hover)
+    nmap <buffer> <silent> gd <Plug>(lsp-definition)
+    nmap <buffer> <silent> <Leader>r <Plug>(lsp-rename)
     " default JetBrains mapping
-    nnoremap <buffer> <silent> <S-F6> <Plug>(lsp-rename)
+    nmap <buffer> <silent> <S-F6> <Plug>(lsp-rename)
     " Apparently <S-F6> is <F18> in Terminator.
-    nnoremap <buffer> <silent> <F18> <Plug>(lsp-rename)
-    nnoremap <buffer> <silent> <F7> <Plug>(lsp-references)
+    nmap <buffer> <silent> <F18> <Plug>(lsp-rename)
+    nmap <buffer> <silent> <F7> <Plug>(lsp-references)
   endfunction
   augroup LSP_mappings
     autocmd!
