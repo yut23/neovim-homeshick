@@ -19,21 +19,27 @@ endif
 if !exists('b:ale_ftplugin_already_run')
   let b:ale_linters = ['vim-lsp', 'cppcheck']
   let b:ale_linters += ['clangtidy']
+  let b:ale_linters_ignore = []
 
   let b:ale_fixers = ['clang-format']
 
   let b:ale_fix_on_save = 1
 
-  let b:ale_c_clangtidy_checks = ['-security.insecureAPI.DeprecatedOrUnsafeBufferHandling', '-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling']
-  let b:ale_cpp_clangtidy_checks = b:ale_c_clangtidy_checks
-  " forcibly turn off color in case it's enabled in .clang-tidy
-  let b:ale_c_clangtidy_extra_options = '-use-color=false'
+  if executable('clangd-tidy')
+    let b:ale_c_clangtidy_executable = 'clangd-tidy'
+    let b:ale_cpp_clangtidy_executable = b:ale_c_clangtidy_executable
+    " forcibly turn off color in case it's enabled in .clang-tidy
+    let b:ale_c_clangtidy_extra_options = '--color=never'
+  else
+    let b:ale_c_clangtidy_checks = ['-security.insecureAPI.DeprecatedOrUnsafeBufferHandling', '-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling']
+    let b:ale_cpp_clangtidy_checks = b:ale_c_clangtidy_checks
+    " forcibly turn off color in case it's enabled in .clang-tidy
+    let b:ale_c_clangtidy_extra_options = '-use-color=false'
+  endif
   let b:ale_cpp_clangtidy_extra_options = b:ale_c_clangtidy_extra_options
 
   let b:ale_c_cppcheck_options = '--enable=style --inline-suppr'
   let b:ale_cpp_cppcheck_options = b:ale_c_cppcheck_options
-  "let b:ale_c_ccls_init_options = g:lsp_settings['ccls']
-  "let b:ale_cpp_ccls_init_options = b:ale_c_ccls_init_options
 
   let b:ale_ftplugin_already_run = 1
 endif
