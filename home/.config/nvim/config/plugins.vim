@@ -129,12 +129,11 @@ if has_key(g:plugs, 'vim-lsp')
   " disable highlighting references to the symbol under the cursor
   let g:lsp_document_highlight_enabled = 0
 
-  if executable('ccls')
+  if executable('clangd')
     au User lsp_setup call lsp#register_server({
-          \ 'name': 'ccls',
-          \ 'cmd': {server_info->['ccls']},
+          \ 'name': 'clangd',
+          \ 'cmd': {server_info->['clangd']},
           \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-          \ 'initialization_options': g:lsp_settings['ccls'],
           \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc', 'cuda'],
           \ })
   endif
