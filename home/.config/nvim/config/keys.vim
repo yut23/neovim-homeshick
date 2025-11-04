@@ -109,9 +109,10 @@ if has_key(g:plugs, 'vim-lsp')
   augroup END
 endif
 
-" delete back word with Ctrl-Backspace (^H in most terminals) and forward word with Ctrl-Delete
+" delete back word with Ctrl/Alt-Backspace (^H in most terminals) and forward word with Ctrl-Delete
 map!  <C-W>
 map! <C-BS> <C-W>
+map! <A-BS> <C-W>
 " <C-G>u creates a new undo point, "_ is the black hole register
 inoremap <C-Del> <C-G>u<C-O>"_de
 
@@ -131,6 +132,13 @@ nnoremap gi `.
 
 " Show unicode info with ga
 nmap ga <Plug>(UnicodeGA)
+
+" Maximize the current buffer (open it in a new tab), like <prefix>z in tmux.
+" :q to unmaximize (close the tab).
+nnoremap <C-W>z <C-W>s<C-W>T
+
+" Shortcut for %:p:h/ in command mode (from https://stackoverflow.com/questions/27978307/how-to-run-vim-commands-scripts-from-project-root#comment44370662_27985053)
+cnoremap <C-R><C-D> %:p:h/
 
 " Completion menu/supertab replacement
 inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
