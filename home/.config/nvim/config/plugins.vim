@@ -142,6 +142,10 @@ if has_key(g:plugs, 'vim-lsp')
   if has_key(g:plugs, 'vim-lsp-ale')
     let g:lsp_ale_auto_config_ale = v:false
   endif
+
+  " disable code action signs, as they cause massive lag spikes while
+  " scrolling through code
+  let g:lsp_document_code_action_signs_enabled = 0
 endif
 
 
