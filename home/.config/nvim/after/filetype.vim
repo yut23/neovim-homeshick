@@ -6,4 +6,7 @@ augroup filetypedetect
 
   " override filetype for gdb sources
   au BufNewFile,BufRead /scratch/build/gdb/binutils-gdb/**/*.c setfiletype cpp
+
+  " configure tabs when viewing libstdc++ code
+  au BufRead /usr/include/c++/**/* setlocal ts=8 sw=2
 augroup END
