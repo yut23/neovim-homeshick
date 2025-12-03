@@ -4,14 +4,18 @@
 " 0: default set of plugins
 " 1: additional coding plugins and ALE (fully vim compatible)
 " 2: NCM2 and snippets (can't get nvim-yarp to work on Frontier with vim)
-if hostname() ==? 'mandelbrot' || hostname() ==? 'blackwidow'
+if $system_name ==? 'mandelbrot' || $system_name ==? 'blackwidow'
   let g:rc_level = 2
   let g:python_host_prog = '/usr/bin/python2'
   let g:python3_host_prog = '/usr/bin/python3'
-elseif hostname() ==? 'xrb'
+elseif $system_name ==? 'xrb'
   let g:rc_level = 2
   let g:python_host_prog = '/usr/bin/python2'
   let g:python3_host_prog = '/home/eric/mambaforge/bin/python3'
+elseif $system_name =~? 'VRCC-3' || $system_name ==? 'zedbox'
+  let g:rc_level = 2
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
 elseif $system_name ==? 'frontier'
   let g:rc_level = 1
 elseif $system_name ==? 'cantor'
