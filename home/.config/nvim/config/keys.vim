@@ -204,3 +204,8 @@ if has_key(g:plugs, 'vim-tmux-navigator')
   " restore Ctrl-L in visual mode for redrawing the screen
   vunmap <c-l>
 endif
+
+" shortcut to mark a selection for linediff-ing
+if has_key(g:plugs, 'linediff.vim')
+  vnoremap <Leader>ld :Linediff<CR>
+endif
