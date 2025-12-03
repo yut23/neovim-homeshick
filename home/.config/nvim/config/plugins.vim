@@ -64,6 +64,16 @@ if has_key(g:plugs, 'editorconfig-vim')
 endif
 
 
+" fugitive
+" --------
+if has_key(g:plugs, 'vim-fugitive')
+  " don't delete the fugitive-summary buffer when navigating away
+  augroup fugitiveKeepSummaryOpen
+    autocmd User FugitiveIndex setlocal bufhidden=
+  augroup END
+endif
+
+
 " vim-ref
 " -------
 if has_key(g:plugs, 'vim-ref')
