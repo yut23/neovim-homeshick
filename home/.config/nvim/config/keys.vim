@@ -56,12 +56,12 @@ nnoremap <Leader>Q :q!<CR>
 " za is so awkward
 nnoremap <Leader>z za
 
-nnoremap <silent> <Leader>hi :let @/ = ""<CR>
+noremap <Leader>hi <Cmd>let @/ = ""<CR>
 
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>u :UndotreeToggle<CR>
 
-nnoremap <silent> <Leader>gg :GitGutter<CR>
+noremap <Leader>gg <Cmd>GitGutter<CR>
 
 if has_key(g:plugs, 'ale')
   nmap <Leader>al <Plug>(ale_lint)
@@ -196,11 +196,11 @@ if has_key(g:plugs, 'vim-asterisk')
 endif
 
 if has_key(g:plugs, 'vim-tmux-navigator')
-  noremap <silent> <c-h> :<C-U>TmuxNavigateLeft<cr>
-  noremap <silent> <c-j> :<C-U>TmuxNavigateDown<cr>
-  noremap <silent> <c-k> :<C-U>TmuxNavigateUp<cr>
-  noremap <silent> <c-l> :<C-U>TmuxNavigateRight<cr>
-  noremap <silent> <c-\> :<C-U>TmuxNavigatePrevious<cr>
+  noremap <c-h> <Cmd>TmuxNavigateLeft<CR>
+  noremap <c-j> <Cmd>TmuxNavigateDown<CR>
+  noremap <c-k> <Cmd>TmuxNavigateUp<CR>
+  noremap <c-l> <Cmd>TmuxNavigateRight<CR>
+  noremap <c-\> <Cmd>TmuxNavigatePrevious<CR>
   " restore Ctrl-L in visual mode for redrawing the screen
   vunmap <c-l>
 endif
