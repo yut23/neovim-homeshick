@@ -8,6 +8,24 @@ function! ale_linters#python#bellybutton#GetExecutable(buffer) abort
     return ale#python#FindExecutable(a:buffer, 'python_bellybutton', ['bellybutton'])
 endfunction
 
+" The directory to change to before running bellybutton (borrowed from mypy)
+function! ale_linters#python#bellybutton#GetCwd(buffer) abort
+    " If we find a directory with ".bellybutton.yml" in it use that,
+    " else try and find the "python project" root, or failing
+    " that, run from the same folder as the current file
+    for l:path in ale#path#Upwards(expand('#' . a:buffer . ':p:h'))
+        if filereadable(l:path . '/.bellybutton.yml')
+            return l:path
+        endif
+    endfor
+
+    let l:project_root = ale#python#FindProjectRoot(a:buffer)
+
+    return !empty(l:project_root)
+    \   ? l:project_root
+    \   : expand('#' . a:buffer . ':p:h')
+endfunction
+
 function! ale_linters#python#bellybutton#GetCommand(buffer) abort
     return expand('~/bin/lib/ale_bellybutton.py') . ' %t'
 endfunction
@@ -38,6 +56,7 @@ endfunction
 call ale#linter#Define('python', {
 \   'name': 'bellybutton',
 \   'executable': function('ale_linters#python#bellybutton#GetExecutable'),
+\   'cwd': function('ale_linters#python#bellybutton#GetCwd'),
 \   'command': function('ale_linters#python#bellybutton#GetCommand'),
 \   'callback': 'ale_linters#python#bellybutton#Handle',
 \})
