@@ -40,6 +40,22 @@ if !empty($TMUX) && $NVIM_GUI == 1
   endif
 endif
 
+" fix neovim settings under MSYS2
+" see https://github.com/neovim/neovim/issues/16957
+if has('nvim') && !empty($MSYSTEM) && (&shell =~? 'bash' || &shell =~? 'zsh')
+  " search for MSWIN in https://github.com/neovim/neovim/blob/release-0.11/src/nvim/options.lua
+  let &grepprg = 'grep -n $* /dev/null'
+  let &isident = '@,48-57,_,192-255'
+  let &keywordprg = ':Man'
+  let &shellcmdflag = '-c'
+  let &shellpipe = '| tee'
+  let &shellredir = '>'
+  if exists('+shellslash')
+    let &shellslash = 1
+  endif
+  let &shellxquote = ''
+endif
+
 source $HOME/.config/nvim/config/init.vim
 source $HOME/.config/nvim/config/general.vim
 source $HOME/.config/nvim/config/keys.vim
