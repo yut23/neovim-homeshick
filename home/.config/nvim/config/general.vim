@@ -2,12 +2,11 @@
 " vim: foldmethod=marker
 scriptencoding utf-8
 
-let s:data_dir = $HOME . '/.local/share/nvim/'
-"if has('nvim')
-"  let s:data_dir = stdpath('data')
-"else
-"  let s:data_dir = $HOME . '/.local/share/vim/'
-"endif
+if has('nvim')
+  let s:data_dir = stdpath('data')
+else
+  let s:data_dir = $HOME . '/.local/share/nvim/'
+endif
 let s:vim_tmux = !has('nvim') && $TERM =~# 'tmux\|screen'
 
 "" Colors {{{
