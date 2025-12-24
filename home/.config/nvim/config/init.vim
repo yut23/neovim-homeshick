@@ -4,6 +4,8 @@
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.shellescape(data_dir).'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  " work around https://github.com/neovim/neovim/issues/28128
+  let &runtimepath = &runtimepath
   augroup vimplug_install
     autocmd!
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
