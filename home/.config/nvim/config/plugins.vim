@@ -51,6 +51,16 @@ if has_key(g:plugs, 'vim-better-whitespace')
 endif
 
 
+" vim-symlink
+" -----------
+if has_key(g:plugs, 'vim-symlink')
+  if has('nvim') && has('wsl')
+    " this breaks rendering, for some reason
+    let g:symlink_redraw = 0
+  endif
+endif
+
+
 " EditorConfig
 " ------------
 if has_key(g:plugs, 'editorconfig-vim')
