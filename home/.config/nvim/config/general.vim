@@ -212,10 +212,11 @@ set undofile
 
 "" Commands {{{
 " Open the config folder for editing
+let config_dir = has('nvim') ? stdpath('config') : '~/.config/nvim'
 if has_key(g:plugs, 'nerdtree')
-  command Cfg NERDTree ~/.config/nvim | normal O
+  command Cfg execute 'NERDTree ' . config_dir . ' | normal O'
 else
-  command Cfg e ~/.config/nvim | normal 3jO
+  command Cfg execute 'e ' . config_dir . ' | normal 3jO'
 endif
 " }}}
 
