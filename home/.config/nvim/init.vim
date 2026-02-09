@@ -31,6 +31,12 @@ endif
 " use python 3 by default
 set pyxversion=3
 
+" neovim supports has('gui_running') since 0.9, and setting local env vars on
+" Windows is painful, so set $NVIM_GUI if we know we're in a GUI
+if empty($NVIM_GUI) && has('gui_running')
+  let $NVIM_GUI = '1'
+endif
+
 " if we're not in a terminal, clear $TMUX to disable vim-tmux-navigator
 if !empty($TMUX) && $NVIM_GUI == 1
   let $TMUX = ''
