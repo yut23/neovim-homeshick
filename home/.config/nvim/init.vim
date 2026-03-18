@@ -1,5 +1,9 @@
 " ~/.config/nvim/init.vim
 
+if has('win32') && empty($system_name)
+  let $system_name = hostname()
+endif
+
 " RC levels:
 " 0: default set of plugins
 " 1: additional coding plugins and ALE (fully vim compatible)
@@ -14,8 +18,12 @@ elseif $system_name ==? 'xrb'
   let g:python3_host_prog = '/home/eric/mambaforge/bin/python3'
 elseif $system_name =~? 'VRCC-3' || $system_name ==? 'zedbox'
   let g:rc_level = 2
-  let g:python_host_prog = '/usr/bin/python2'
-  let g:python3_host_prog = '/usr/bin/python3'
+  if has('win32')
+    let g:python3_host_prog = 'D:\miniforge3\envs\main\python.exe'
+  else
+    let g:python_host_prog = '/usr/bin/python2'
+    let g:python3_host_prog = '/usr/bin/python3'
+  endif
 elseif $system_name ==? 'frontier'
   let g:rc_level = 1
 elseif $system_name ==? 'cantor'
