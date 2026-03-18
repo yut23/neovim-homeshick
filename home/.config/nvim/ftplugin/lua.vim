@@ -8,8 +8,10 @@
 " .lvimrc file if polyglot resets the filetype on BufWritePost (e.g.
 " polyglot#detect#H() for *.h files)
 if !exists('b:ale_ftplugin_already_run')
-  let b:ale_fixers = ['luaformatter']
-  let b:ale_fix_on_save = 1
+  if executable('luaformatter')
+    let b:ale_fixers = ['luaformatter']
+    let b:ale_fix_on_save = 1
+  endif
 
   let b:ale_ftplugin_already_run = 1
 endif
