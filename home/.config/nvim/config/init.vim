@@ -62,6 +62,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'chrisbra/unicode.vim'
 Plug 'FooSoft/vim-argwrap'
+Plug 'glts/vim-magnum' " dependency for vim-radical
+Plug 'glts/vim-radical'
 Plug 'haya14busa/vim-asterisk'
 Plug 'jremmen/vim-ripgrep', Cond(executable('rg'))
 "Plug 'junegunn/vim-peekaboo'
