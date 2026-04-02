@@ -1,4 +1,15 @@
 " Syntax file for my personal todo-list. Vaguely markdown-ish.
+scriptencoding utf-8
+
+" Example:
+" -- header title --
+" * pending
+"   - info
+" ✓ completed
+" ✗ cancelled
+" - info
+" - info with `inline code`
+" # comment (mostly for `vim: ft=todo`)
 
 " Quit when a syntax file was already loaded.
 if exists('b:current_syntax')
