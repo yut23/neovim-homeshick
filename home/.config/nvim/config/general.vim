@@ -49,6 +49,9 @@ let &colorcolumn='80,88,120'
 " Decrease delay on escape
 set ttimeoutlen=50
 
+" Don't add a newline to the end of a file if it's missing
+set nofixendofline
+
 " use system clipboard
 set clipboard+=unnamed
 " automatically copy visual selection to system clipboard
