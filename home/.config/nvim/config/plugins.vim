@@ -83,6 +83,12 @@ if has_key(g:plugs, 'vim-fugitive')
   augroup END
 endif
 
+" fugitive-gitlab
+" ---------------
+if has_key(g:plugs, 'fugitive-gitlab.vim')
+  let g:fugitive_gitlab_domains = ['http://git.visor.com']
+endif
+
 
 " vim-ref
 " -------

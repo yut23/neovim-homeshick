@@ -84,6 +84,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 
+Plug 'shumphrey/fugitive-gitlab.vim'
+
 " other
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'LucHermitte/lh-vim-lib'
