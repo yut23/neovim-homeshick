@@ -14,8 +14,8 @@ endif
 " q: allow formatting of comments with 'gq'
 " j: remove comment leader when joining lines
 setlocal formatoptions=tcqj
-" r: autoindent after hitting <Enter> in Insert mode
-" o: autoindent after hitting 'o' or 'O' in Normal mode
+" r: insert comment leader after hitting <Enter> in Insert mode
+" o: insert comment leader after hitting 'o' or 'O' in Normal mode
 setlocal formatoptions+=r
 
 setlocal comments=fb:-,fb:*,fb:✓,b:#
