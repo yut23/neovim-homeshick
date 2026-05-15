@@ -19,7 +19,7 @@ elseif $system_name ==? 'xrb'
 elseif $system_name =~? 'VRCC-3' || $system_name ==? 'zedbox'
   let g:rc_level = 2
   if has('win32')
-    let g:python3_host_prog = 'D:\miniforge3\envs\main\python.exe'
+    let g:python3_host_prog = 'C:\Users\EricJohnson\miniforge3\envs\main\python.exe'
   else
     let g:python_host_prog = '/usr/bin/python2'
     let g:python3_host_prog = '/usr/bin/python3'
