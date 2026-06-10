@@ -1,7 +1,7 @@
 " config/init.vim
 
 " automatically install vim-plug
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+let data_dir = has('nvim') ? stdpath('data') . '/site' : expand('~/.vim')
 if empty(glob(data_dir . '/autoload/plug.vim'))
   call mkdir(data_dir . '/autoload', 'p')
   silent execute '!curl -fLo '.shellescape(data_dir).'/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -20,7 +20,7 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-call plug#begin((has('nvim') ? stdpath('data') : '~/.vim') . '/plugged')
+call plug#begin((has('nvim') ? stdpath('data') : expand('~/.vim')) . '/plugged')
 
 " add help files
 Plug 'junegunn/vim-plug'
