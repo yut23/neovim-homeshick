@@ -4,6 +4,8 @@ if has('win32') && empty($system_name)
   let $system_name = hostname()
 endif
 
+let s:is_msys2 = !empty($MSYSTEM)
+
 " RC levels:
 " 0: default set of plugins
 " 1: additional coding plugins and ALE (fully vim compatible)
@@ -16,14 +18,20 @@ elseif $system_name ==? 'xrb'
   let g:rc_level = 2
   let g:python_host_prog = '/usr/bin/python2'
   let g:python3_host_prog = '/home/eric/mambaforge/bin/python3'
-elseif $system_name =~? 'VRCC-3' || $system_name ==? 'zedbox'
+elseif $system_name =~? 'VRCC-3'
   let g:rc_level = 2
   if has('win32')
+    " just use the miniforge version for MSYS2 as well, as the native one has
+    " issues with path translation
     let g:python3_host_prog = 'C:\Users\EricJohnson\miniforge3\envs\main\python.exe'
   else
     let g:python_host_prog = '/usr/bin/python2'
     let g:python3_host_prog = '/usr/bin/python3'
   endif
+elseif $system_name ==? 'zedbox'
+  let g:rc_level = 2
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
 elseif $system_name ==? 'frontier'
   let g:rc_level = 1
 elseif $system_name ==? 'cantor'
@@ -56,7 +64,7 @@ endif
 
 " fix neovim settings under MSYS2
 " see https://github.com/neovim/neovim/issues/16957
-if has('nvim') && !empty($MSYSTEM) && (&shell =~? 'bash' || &shell =~? 'zsh')
+if has('nvim') && s:is_msys2 && (&shell =~? 'bash' || &shell =~? 'zsh')
   " search for MSWIN in https://github.com/neovim/neovim/blob/release-0.11/src/nvim/options.lua
   let &grepprg = 'grep -n $* /dev/null'
   let &isident = '@,48-57,_,192-255'
