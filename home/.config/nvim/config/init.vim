@@ -90,8 +90,13 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'LucHermitte/lh-vim-lib'
 
-Plug 'moll/vim-bbye' " optional dependency
-Plug 'aymericbeaumet/vim-symlink'
+if has('nvim-0.8') || has('patch-9.0.0085')
+  Plug 'aymericbeaumet/vim-symlink'
+else
+  " avoid https://github.com/aymericbeaumet/vim-symlink/issues/22
+  Plug 'moll/vim-bbye' " optional dependency
+  Plug 'aymericbeaumet/vim-symlink', {'commit': 'fec2d1a'}
+endif
 
 Plug 'editorconfig/editorconfig-vim'
 
