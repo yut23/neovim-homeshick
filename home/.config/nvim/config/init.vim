@@ -83,6 +83,7 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
+Plug 'wsdjeg/vim-fetch'
 
 Plug 'shumphrey/fugitive-gitlab.vim'
 
