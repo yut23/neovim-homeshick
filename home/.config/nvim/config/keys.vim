@@ -4,17 +4,17 @@ scriptencoding utf-8
 " Fix mappings in vim
 if !has('nvim')
   if $TERM =~# 'tmux\|screen'
-    set <xUp>=[1;*A
-    set <xDown>=[1;*B
-    set <xRight>=[1;*C
-    set <xLeft>=[1;*D
-    set <xHome>=[1;*H
-    set <xEnd>=[1;*F
-    set <xF1>=[1;*P
-    set <xF2>=[1;*Q
-    set <xF3>=[1;*R
-    set <xF4>=[1;*S
-    set <Del>=[3;*~
+    execute "set <xUp>=\<Esc>[1;*A"
+    execute "set <xDown>=\<Esc>[1;*B"
+    execute "set <xRight>=\<Esc>[1;*C"
+    execute "set <xLeft>=\<Esc>[1;*D"
+    execute "set <xHome>=\<Esc>[1;*H"
+    execute "set <xEnd>=\<Esc>[1;*F"
+    execute "set <xF1>=\<Esc>[1;*P"
+    execute "set <xF2>=\<Esc>[1;*Q"
+    execute "set <xF3>=\<Esc>[1;*R"
+    execute "set <xF4>=\<Esc>[1;*S"
+    execute "set <Del>=\<Esc>[3;*~"
   endif
   if !has('patch-8.1.2134') || has('patch-8.1.2145')
     " Custom libvte ctrl-backspace (xterm modifyOtherKeys / CSI u format)
@@ -22,11 +22,11 @@ if !has('nvim')
     " just works, but 2145 breaks mappings for C-H, C-L, etc. after C-BS is
     " pressed, because vim expects that all keys will generate the modified
     " codes (which is not the case for my simple libvte patch).
-    set <BS>=[127;*u
+    execute "set <BS>=\<Esc>[127;*u"
     " normal, visual, select, and operator-pending
-    map  <BS>
+    map <C-?> <BS>
     " insert and command-line
-    map!  <BS>
+    map! <C-?> <BS>
   end
 endif
 
@@ -110,7 +110,7 @@ if has_key(g:plugs, 'vim-lsp')
 endif
 
 " delete back word with Ctrl/Alt-Backspace (^H in most terminals) and forward word with Ctrl-Delete
-map!  <C-W>
+map! <C-H> <C-W>
 map! <C-BS> <C-W>
 map! <A-BS> <C-W>
 " <C-G>u creates a new undo point, "_ is the black hole register
