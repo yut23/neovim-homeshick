@@ -158,7 +158,7 @@ if has_key(g:plugs, 'vim-lsp')
   if executable('clangd')
     au User lsp_setup call lsp#register_server({
           \ 'name': 'clangd',
-          \ 'cmd': {server_info->['clangd']},
+          \ 'cmd': {server_info->['clangd', '--header-insertion=never']},
           \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
           \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc', 'cuda'],
           \ })
