@@ -11,3 +11,7 @@ endif
 if exists(':GuiPopupmenu')
   GuiPopupmenu 0
 endif
+if has('win32')
+  " make Shift+Right Mouse paste in insert & command mode, like in Windows Terminal
+  map! <S-RightMouse> <MiddleMouse>
+endif

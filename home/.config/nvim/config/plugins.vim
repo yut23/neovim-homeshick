@@ -106,6 +106,20 @@ if has_key(g:plugs, 'linediff.vim')
 endif
 
 
+" undotree
+" --------
+if has_key(g:plugs, 'undotree') && !executable('diff')
+  " fallbacks if diff is unavailable
+  if executable('"C:\Program Files\Git\usr\bin\diff.exe"')
+    " try git diff
+    let g:undotree_DiffCommand = '"C:\Program Files\Git\usr\bin\diff.exe"'
+  elseif executable('fc')
+    " Windows' FC.exe (file compare)
+    let g:undotree_DiffCommand = "fc"
+  endif
+endif
+
+
 " NERDCommenter
 " -------------
 if has_key(g:plugs, 'nerdcommenter')

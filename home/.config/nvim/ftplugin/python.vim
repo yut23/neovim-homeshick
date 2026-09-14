@@ -51,7 +51,11 @@ if !exists('b:ale_ftplugin_already_run')
   " ignore implicit namespace package complaints for fugitive blob buffers
   " This is supposed to be {'fugitive:/**': ['INP001']}, but there's no way to
   " escape the first colon.
-  let b:ale_python_ruff_options = '--extend-per-file-ignores ''fugitive?/**:INP001'''
+  if !has('win32')
+    let b:ale_python_ruff_options = '--extend-per-file-ignores ''fugitive?/**:INP001'''
+  else
+    let b:ale_python_ruff_options = '--extend-per-file-ignores "fugitive?/**:INP001"'
+  endif
 
   " pyls
   let b:ale_python_pyls_extra_args = [

@@ -24,6 +24,8 @@ elseif $system_name =~? 'VRCC-3'
     " just use the miniforge version for MSYS2 as well, as the native one has
     " issues with path translation
     let g:python3_host_prog = 'C:\Users\EricJohnson\miniforge3\envs\main\python.exe'
+    " add Git Bash usr/bin directory to $PATH
+    let $PATH .= ';C:\Program Files\Git\usr\bin'
   else
     let g:python_host_prog = '/usr/bin/python2'
     let g:python3_host_prog = '/usr/bin/python3'
