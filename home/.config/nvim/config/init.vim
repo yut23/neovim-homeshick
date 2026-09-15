@@ -40,6 +40,7 @@ let g:polyglot_disabled += ['python', 'python-indent']
 let g:polyglot_disabled += ['markdown']
 " conflicts with *.ll for llvm (it's some genealogy software)
 let g:polyglot_disabled += ['lifelines']
+let g:polyglot_disabled += ['octave']
 
 Plug 'sheerun/vim-polyglot'
 Plug 'sukima/xmledit'
