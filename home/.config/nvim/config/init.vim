@@ -26,7 +26,8 @@ call plug#begin((has('nvim') ? stdpath('data') : expand('~/.vim')) . '/plugged')
 Plug 'junegunn/vim-plug'
 
 " colorschemes
-Plug 'justinmk/molokai'
+" This has been removed from github, but I've been using my local copy anyways
+"Plug 'justinmk/molokai'
 
 " syntax
 " can't do comments inside a multiline list, so this will have to do
